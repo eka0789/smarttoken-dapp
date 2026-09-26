@@ -35,7 +35,26 @@ ETHERSCAN_API_KEY=         # verifikasi BscScan
 BSC_MAINNET_RPC=           # opsional override
 BSC_TESTNET_RPC=
 ```
-> **Peringatan historis:** `.env.example` menyatakan kunci deployer lama pernah terekspos di repo. Jika wallet tsb masih `owner` kontrak mainnet → **rotasi ownership segera** (panggil transfer ownership ke wallet baru/multisig di semua proxy).
+> **Peringatan historis:** `.env.example` menyatakan kunci deployer lama pernah terekspos di repo. **Status terverifikasi on-chain (via dry-run `scripts/rotate-ownership.js`)**: seluruh 10 proxy kini di-own oleh `0x24C6d5CdF6078dc51c03ac130a5fA113cAE1aa49` (bukan lagi deployer lama `0x487762b44C73639B8907998f76A6a4A63A29D800`). Sisa langkah yang disarankan: (1) pastikan kunci `0x24C6...` tidak pernah terekspos & tersimpan di cold wallet, (2) idealnya pindahkan ownership ke Safe multisig 2/3 dengan script yang sama.
+
+### Runbook rotasi ownership (siap pakai)
+
+```bash
+cd SMT-Backend/mainDeploy/smt-contracts-main/smt-contracts-main
+
+# 1) Dry-run — audit kepemilikan semua 10 proxy (read-only):
+BSC_MAINNET_RPC=https://bsc-dataseed1.defibit.io \
+  npx hardhat run scripts/rotate-ownership.js --network bscmainnet
+
+# 2) Eksekusi transferOwnership ke wallet/multisig baru:
+DEPLOYER_PRIVATE_KEY=<kunci owner saat ini> \
+BSC_MAINNET_RPC=https://bsc-dataseed1.defibit.io \
+OWNERSHIP_NEW_OWNER=0x<alamat-baru-multisig> \
+OWNERSHIP_EXECUTE=yes \
+  npx hardhat run scripts/rotate-ownership.js --network bscmainnet
+```
+
+Script memverifikasi `owner()` setelah setiap tx dan mencetak bukti audit. Bila RPC bsc-dataseed utama gagal (ECONNRESET dari beberapa jaringan), pakai `BSC_MAINNET_RPC=https://bsc-dataseed1.defibit.io`.
 
 ---
 
@@ -113,6 +132,17 @@ Opsi hosting:
 
 ---
 
+## 7. Status Keamanan Dependencies (per Sept 2026)
+
+Setelah pembersihan (`npm audit fix` + axios 1.20 + `overrides` di package.json + pin `@walletconnect/ethereum-provider@2.17.2`):
+
+- **Kritikal turun 11 → 2** (famili paket). Dua sisanya adalah *accepted risk terdokumentasi*:
+  - **tar ≤7.5.20** — patch hanya tersedia di tar 7 (ESM-only, memecah webpack 4 CRA). Konsumen di proyek ini: cache build terser-webpack-plugin dan `swarm-js` (legacy Bzz yang **tidak pernah dipakai** dApp) — tidak ada ekstraksi tar dari sumber tak-dipercaya → tidak tereksploitasi.
+  - **elliptic 6.6.1** — versi terbaru; advisory 2025+ belum punya rilis patch. Pantau dan naikkan begitu tersedia (`overrides` sudah siap ditambah).
+- Sisa ~200 temuan low/moderate mayoritas berada di toolchain CRA 4 / web3 v1 lama. Solusi struktural: migrasi Vite + React 18 (roadmap F2).
+
+---
+
 ## 6. Operasional Harian
 
 | Tugas | Cara |
@@ -122,6 +152,6 @@ Opsi hosting:
 | Update harga lisensi | Owner → `updateLicenseTypePrice` (SmartArmy) |
 | Update share ladder | Owner → `updateActivityShare` (SmartLadder) |
 | Kumpulkan token stray | Owner → `SMTBridge.collect(token)` |
-| Rotasi owner proxy | Owner lama → transferOwnership (semua 10 kontrak) |
+| Rotasi owner proxy | Owner lama → transferOwnership (semua 10 kontrak) — pakai `scripts/rotate-ownership.js` (lihat runbook di atas) |
 
 > Semua operasi di atas bisa dilakukan lewat halaman *Write Contract* BscScan dengan wallet owner/operator.
