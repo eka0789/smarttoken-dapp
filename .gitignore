@@ -1,0 +1,46 @@
+# ===== Smart Ecosystem root .gitignore =====
+
+# Dependencies
+**/node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+SMT-FRONTEND/smarttoken-dev/smarttoken-dev/build/
+SMT-FRONTEND/smarttoken-dev/smarttoken-dev/build-dist/
+build/
+build-dist/
+
+# Environment secrets (contoh aman tetap di-commit: .env.example)
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.local
+**/.env.*.local
+.secret.js
+
+# Hardhat build artifacts (dapat di-generate ulang via `npx hardhat compile`)
+**/cache/
+**/artifacts/
+**/typechain/
+**/typechain-types/
+**/flattened/
+**/coverage/
+coverage.json
+
+# Testing
+coverage/
+
+# Logs & OS junk
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,15 @@
+{
+  "theme_color": "#323232",
+  "background": "linear-gradient(180deg, #323232 0%, #000000 100%)",
+  "display": "standalone",
+  "start_url": ".",
+  "short_name": "Smart",
+  "name": "Smart Ecosystem",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "44x60",
+      "type": "image/svg"
+    }
+  ]
+}

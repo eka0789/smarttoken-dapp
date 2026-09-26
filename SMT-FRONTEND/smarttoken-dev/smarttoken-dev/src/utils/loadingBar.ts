@@ -1,0 +1,1 @@
+export const loadingBar = '/static/img/loading.gif';

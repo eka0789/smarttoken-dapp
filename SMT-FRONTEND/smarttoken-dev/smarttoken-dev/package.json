@@ -1,0 +1,119 @@
+{
+  "name": "smartecosystem",
+  "version": "1.0",
+  "title": "Smart Ecosystem",
+  "description": "Smart Ecosystem.",
+  "license": "MIT",
+  "author": {
+    "name": "Fariz"
+  },
+  "private": false,
+  "dependencies": {
+    "@babel/runtime": "^7.16.5",
+    "@binance-chain/bsc-connector": "^1.0.0",
+    "@emotion/react": "11.4.1",
+    "@emotion/styled": "11.3.0",
+    "@gunawanedy/react-button-slider": "1.0.6",
+    "@metamask/detect-provider": "^1.2.0",
+    "@mui/icons-material": "5.0.3",
+    "@mui/lab": "5.0.0-alpha.50",
+    "@mui/material": "5.0.3",
+    "@mui/styles": "5.0.1",
+    "@sentry/react": "^7.99.0",
+    "@walletconnect/ethereum-provider": "2.17.2",
+    "@walletconnect/modal": "^2.6.1",
+    "@web3-react/core": "^6.0.9",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/walletlink-connector": "^6.0.9",
+    "apexcharts": "^3.32.1",
+    "axios": "^1.20.0",
+    "babel-runtime": "^6.26.0",
+    "clsx": "1.1.1",
+    "date-fns": "^2.28.0",
+    "ethers": "^5.5.3",
+    "history": "^5.2.0",
+    "ipfs-http-client": "^56.0.1",
+    "lodash": "^4.17.21",
+    "nprogress": "^0.2.0",
+    "prop-types": "15.7.2",
+    "query-string": "^7.1.0",
+    "random-int": "^3.0.0",
+    "react": "^17.0.2",
+    "react-apexcharts": "^1.4.1",
+    "react-custom-scrollbars-2": "4.4.0",
+    "react-dom": "^17.0.2",
+    "react-helmet-async": "1.1.2",
+    "react-hook-form": "^7.28.1",
+    "react-hot-toast": "^2.2.0",
+    "react-router": "^6.30.0",
+    "react-router-dom": "^6.30.0",
+    "react-scripts": "4.0.3",
+    "react-swipeable-views": "^0.14.0",
+    "web-vitals": "2.1.2",
+    "web3": "^1.7.0",
+    "web3modal": "^1.9.5"
+  },
+  "scripts": {
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-app-rewired start",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-app-rewired build",
+    "test": "react-scripts test --watchAll=false --passWithNoTests",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "lint": "eslint src/",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "7.15.8",
+    "@types/numeral": "2.0.2",
+    "@types/react": "17.0.29",
+    "@types/react-dom": "17.0.9",
+    "@types/react-router-dom": "5.3.1",
+    "@typescript-eslint/eslint-plugin": "5.0.0",
+    "@typescript-eslint/parser": "5.0.0",
+    "cross-env": "^7.0.3",
+    "eslint": "7.32.0",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-airbnb-typescript": "14.0.1",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-config-react-app": "^7.0.0",
+    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "prettier": "^2.3.2",
+    "react-app-rewired": "^2.2.1",
+    "sass": "^1.49.9",
+    "typescript": "^4.3.5"
+  },
+  "resolutions": {
+    "//": "See https://github.com/facebook/create-react-app/issues/11773",
+    "react-error-overlay": "6.0.9"
+  },
+  "overrides": {
+    "ejs": "^3.1.10",
+    "shell-quote": "^1.7.3",
+    "immer": "^9.0.21",
+    "request": { "form-data": "^2.5.4" },
+    "react-dev-utils": { "loader-utils": "1.4.2" },
+    "ipfs-http-client": {
+      "ipfs-core-types": {
+        "ipfs-unixfs": { "protobufjs": "^7.2.5" }
+      }
+    }
+  }
+}

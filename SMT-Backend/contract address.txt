@@ -1,0 +1,54 @@
+owner: 0x487762b44C73639B8907998f76A6a4A63A29D800
+chain id: 56
+Deploying SmartComp contract
+Re-used existing SmartComp Proxy at 0xF5a2F35c97cbfabd5ac9efAE4cC6cC021F6Bb19c
+uniswapV2Factory: 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+uniswapV2Router: 0x10ED43C718714eb63d5aA57B78B54704E256024E
+wbnb: 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c
+busd: 0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56
+uniswapV2Factory: 0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73
+
+Deploying SMTBridge Contract...
+Re-used existing SMTBridge contract at 0x93c2Cd7221f8930f4C7B1Cc146D6e24D73aAC694
+set SmartBridge to SmartComp:  0xdfad1dc07cdff1e4c9f16393aebe5df419c69de06df0543bcf44f1ec8dccc2fd
+
+Deploying GoldenTreePool contract...
+Re-used existing GoldenTreePool Proxy Address: at 0x5Ee32C58766C288323b7de14F52b87ca4274fD55
+set GoldenTreePool to SmartComp:  0xa7cfbdd523c3282628c205ea6e59e71a7ec5f61c63471b7f5ddf80b104ef3db6
+
+Deploying SmartNobilityAchievement Contract...
+Re-used existing SmartNobilityAchievement Proxy Address: at 0x37a0E7335Ede4859F86809433a6786d1B2FeA406
+set SmartNobilityAchievement to SmartComp:  0xdd75f7ce9afd8d37a5ad15fa3ad4b802eb88de58d3cf6549205a168017847a05
+
+Deploying SmartOtherAchievement Contract...
+Re-used existing SmartOtherAchievement Proxy Address: at 0xaB7F3B06f132E028820071ec408ABCF9514BEFf5
+set SmartOtherAchievement to SmartComp:  0x0418be0abe6d06f0ff94486b23b77a1df1afec3d2afc0cb9c178e17c44d0b7b1
+
+Deploying SmartArmy contract...
+Re-used existing SmartArmy Contract Address: at 0xd46F6e865B112223D62a97fF86ebd1c20be6cBA4
+set SmartArmy to SmartComp:  0x64f97dc229c3c0ae259c86d584b357ad6bd030c7e708a3ec425e6b02742cd3c8
+
+Deploying SmartFarm contract...
+Re-used existing SmartFarm Contract Address: at 0xfEDF921A8A0535b966b2Dc13D2c4582E6CB8B383
+set SmartFarm to SmartComp:  0x7e0b1a9dd47e002ffb1bcc5b568ffcc7172a9c24aabb66c0e4d37d5da8250528
+
+Deploying SmartLadder contract...
+Re-used existing SmartLadder Contract Address: at 0x5eA1eF3E7ecAABdC381F5866EB76202Ebcaf008D
+set SmartLadder to SmartComp:  0x96645c7d1e4dfc0cc8500d426075cb3dfeed4c48aa6618ac615af84a9848787a
+
+Deploying SMTC Contract...
+Re-used existing SmartTokenCash contract at 0x6aedC09AE456651FccBBE357B57CA77A44f9da51
+set SmartTokenCash to SmartComp:  0xe541055f667c2a9e63edbb45c463695fc64ae62f2ae2f55e648f39be17cbabc5
+
+set SmartTokenCash to SmartComp:  0xe541055f667c2a9e63edbb45c463695fc64ae62f2ae2f55e648f39be17cbabc5
+
+
+Deploying SMT Token Contract...
+Deploying SMT Token Contract...
+Re-used existing
+SMT Token deployed at at 0xf3F9B44b88CA47Ea583F6Fde50A8C853e3c09c28
+set SMT token to SmartComp:  0x251ca825cd32097dd3cc626b35f72f040fefceb859e86d5b8c85dc0ae5ba5b95
+set tax lock status: 0xd2540a5db71230115fa1b4354e223454b69e361c9da87484a6bf0b7b7f5eb338
+initial activities:  0x38c7db590e441bbc36d09ab132690c0db82e03a3c2765c674e31a29c6ba55814
+SMT-BNB LP token address:  0x2A5834B777Fe6e2a9830C04Ba7C215BBa649C8D3
+SMT-BUSD LP token address:  0xfbeC5B4878E6401522D98459FcF9B2E0bF8bbac5
