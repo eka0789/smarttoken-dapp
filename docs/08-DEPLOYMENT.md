@@ -163,7 +163,7 @@ Setelah pembersihan (`npm audit fix` + axios 1.20 + `overrides` di package.json 
 
 | # | Item | Siapa | Catatan |
 |---|---|---|---|
-| 1 | Push repo ke remote (GitHub/GitLab) | operator | `git remote add origin <url> && git push -u origin main` |
+| 1 | ~~Push repo ke remote~~ ✅ | — | **SELESAI 2026-09-28**: repo private `https://github.com/eka0789/smarttoken-dapp`, semua commit ter-push, `main` tracking `origin/main` |
 | 2 | Isi `REACT_APP_WALLETCONNECT_PROJECT_ID` | operator | daftar gratis di cloud.walletconnect.com; tanpa ini hanya tombol WalletConnect yang terpengaruh (Injected/Binance/Trust tetap jalan) |
 | 3 | Isi `REACT_APP_SENTRY_DSN` (opsional) | operator | tanpa ini error tracking nonaktif, aplikasi tetap berjalan |
 | 4 | Audit kontrak eksternal | operator | opsional untuk kepercayaan investor; kontrak sudah UUPS OpenZeppelin + 18/18 test |

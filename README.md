@@ -38,7 +38,7 @@ cp .env.example .env && npm install && npx hardhat test
 ✅ **Semua item engineering-side selesai** — 18/18 test pass, build produksi sukses, 17 halaman terverifikasi visual, 0 teks template, NetworkGuard/error boundaries/empty states terpasang.
 
 Sisa aksi **operator** (butuh akun eksternal, bukan kode):
-1. Push repo ke remote (`git remote add origin <url> && git push -u origin main`)
+1. ~~Push repo ke remote~~ ✅ **SELESAI** — repo private: https://github.com/eka0789/smarttoken-dapp
 2. Isi `REACT_APP_WALLETCONNECT_PROJECT_ID` (daftar gratis di cloud.walletconnect.com)
 3. Isi `REACT_APP_SENTRY_DSN` (opsional, error tracking)
 4. Audit kontrak eksternal (opsional, untuk kepercayaan investor)
