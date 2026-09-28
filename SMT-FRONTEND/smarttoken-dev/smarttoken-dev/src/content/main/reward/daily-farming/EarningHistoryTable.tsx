@@ -4,6 +4,7 @@ import { makeStyles } from '@mui/styles';
 import RowBox from 'src/components/Box/RowBox';
 import CustomCard from 'src/components/Card';
 import CustomTitle from 'src/components/Title/BadgeTitle';
+import EmptyState from 'src/components/EmptyState';
 
 const Root = styled('div')(
   ({ theme }) => `
@@ -160,6 +161,15 @@ const EarningHistoryTable = () => {
                 </tr>
               </thead>
               <tbody>
+                {rows.length === 0 && (
+                  <tr>
+                    <td colSpan={4}>
+
+                      <EmptyState compact title="No earnings yet" description="Your daily farming earnings will appear here after the first cycle." />
+
+                    </td>
+                  </tr>
+                )}
                 {rows.map((row, idx) => (
                   <tr key={idx}>
                     <td>{idx + 1}</td>

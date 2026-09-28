@@ -3,6 +3,7 @@ import { makeStyles } from '@mui/styles';
 import HeaderProfile from './Profile';
 import HeaderAsset from './Asset';
 import ConnectWallet from './ConnectWallet';
+import NetworkChip from './NetworkChip';
 import RowBox from 'src/components/Box/RowBox';
 import { useWeb3React } from '@web3-react/core';
 
@@ -22,6 +23,7 @@ const HeaderButtons = () => {
 
   return (
     <RowBox className={classes.outBoxStyle}>
+      <NetworkChip />
       {account && <HeaderAsset />}
       <HeaderProfile />
       <Hidden lgDown>

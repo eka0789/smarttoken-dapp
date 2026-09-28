@@ -1,18 +1,9 @@
-import {
-  Box,
-  Typography,
-  Container,
-  Divider,
-  IconButton,
-  Tooltip
-} from '@mui/material';
+import { Box, Typography, Container, Button } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 import Logo from 'src/components/LogoSign';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
 import { styled } from '@mui/material/styles';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import InstagramIcon from '@mui/icons-material/Instagram';
 
 const MainContent = styled(Box)(
   () => `
@@ -30,12 +21,12 @@ function StatusMaintenance() {
   return (
     <>
       <Helmet>
-        <title>Status - Maintenance</title>
+        <title>Under Maintenance</title>
       </Helmet>
       <MainContent>
         <Container maxWidth="md">
           <Logo />
-          <Box textAlign="center">
+          <Box textAlign="center" className="stagger-children">
             <Container maxWidth="xs">
               <Typography variant="h2" sx={{ mt: 4, mb: 2 }} className="animate-fade-up delay-200">
                 The site is currently down for maintenance
@@ -56,41 +47,17 @@ function StatusMaintenance() {
               className="animate-float-slow"
             />
           </Box>
-          <Divider sx={{ my: 4 }} />
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            <Box>
-              <Typography component="span" variant="subtitle1">
-                Phone:{' '}
-              </Typography>
-              <Typography
-                component="span"
-                variant="subtitle1"
-                color="text.primary"
-              >
-                + 00 1 888 555 444
-              </Typography>
-            </Box>
-            <Box>
-              <Tooltip arrow placement="top" title="Facebook">
-                <IconButton color="primary">
-                  <FacebookIcon />
-                </IconButton>
-              </Tooltip>
-              <Tooltip arrow placement="top" title="Twitter">
-                <IconButton color="primary">
-                  <TwitterIcon />
-                </IconButton>
-              </Tooltip>
-              <Tooltip arrow placement="top" title="Instagram">
-                <IconButton color="primary">
-                  <InstagramIcon />
-                </IconButton>
-              </Tooltip>
-            </Box>
+          <Box textAlign="center" mt={4}>
+            <Button
+              href="/main/dashboard"
+              variant="contained"
+              color="primary"
+              size="large"
+              startIcon={<HomeRoundedIcon />}
+              className="btn-shine hover-press animate-fade-up delay-600"
+            >
+              Go to Dashboard
+            </Button>
           </Box>
         </Container>
       </MainContent>

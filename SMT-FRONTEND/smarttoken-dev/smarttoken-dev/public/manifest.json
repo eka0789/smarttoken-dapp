@@ -1,15 +1,17 @@
 {
-  "theme_color": "#323232",
-  "background": "linear-gradient(180deg, #323232 0%, #000000 100%)",
+  "theme_color": "#070C27",
+  "background_color": "#070C27",
   "display": "standalone",
   "start_url": ".",
   "short_name": "Smart",
   "name": "Smart Ecosystem",
+  "description": "Web3 rewards ecosystem on BNB Smart Chain — SMT & SMTC dual token.",
   "icons": [
     {
       "src": "/icon.svg",
-      "sizes": "44x60",
-      "type": "image/svg"
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ]
 }

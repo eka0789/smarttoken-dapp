@@ -73,7 +73,7 @@ const LogoSignInner = styled(Box)(
 function Logo() {
   return (
     <Tooltip title="Smart Ecosystem" arrow>
-      <LogoWrapper to="/overview">
+      <LogoWrapper to="/main/dashboard">
         <LogoSignWrapper>
           <LogoSign>
             <LogoSignInner />

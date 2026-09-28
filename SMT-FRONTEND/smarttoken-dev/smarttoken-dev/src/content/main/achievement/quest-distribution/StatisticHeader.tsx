@@ -27,13 +27,29 @@ const useStyles = makeStyles({
 const StatisticHeader = () => {
   const classes = useStyles();
 
+  const openSmtcOnBscscan = () => {
+    window.open(
+      'https://bscscan.com/token/0x6aedC09AE456651FccBBE357B57CA77A44f9da51',
+      '_blank',
+      'noopener,noreferrer'
+    );
+  };
+
   return (
     <>
       <RowBox className={classes.outBoxStyle}>
         <Box className={classes.innerBoxStyle}>
           <CustomCard width="100%" height="100%">
             <ColumnBox padding="20px">
-              <Typography variant="h4">Quest Wallet Balance</Typography>
+              <Typography variant="h4">
+                Quest Wallet Balance{' '}
+                <Typography
+                  component="span"
+                  sx={{ color: 'rgba(255,255,255,0.4)', fontSize: '12px', fontStyle: 'italic' }}
+                >
+                  (demo)
+                </Typography>
+              </Typography>
               <Typography
                 variant="h2"
                 fontWeight="700"
@@ -51,6 +67,7 @@ const StatisticHeader = () => {
                 fontSize="12px"
                 fontWeight="600"
                 borderRadius="20px"
+                onHandleClick={openSmtcOnBscscan}
               >
                 Visit bscscan
               </CustomButton>
@@ -60,7 +77,15 @@ const StatisticHeader = () => {
         <Box className={classes.innerBoxStyle}>
           <CustomCard width="100%" height="100%">
             <ColumnBox padding="20px">
-              <Typography variant="h4">Total Distributed</Typography>
+              <Typography variant="h4">
+                Total Distributed{' '}
+                <Typography
+                  component="span"
+                  sx={{ color: 'rgba(255,255,255,0.4)', fontSize: '12px', fontStyle: 'italic' }}
+                >
+                  (demo)
+                </Typography>
+              </Typography>
               <Typography
                 variant="h2"
                 fontWeight="700"
@@ -75,7 +100,15 @@ const StatisticHeader = () => {
         <Box className={classes.innerBoxStyle}>
           <CustomCard width="100%" height="100%">
             <ColumnBox padding="20px">
-              <Typography variant="h4">Quest Claimed</Typography>
+              <Typography variant="h4">
+                Quest Claimed{' '}
+                <Typography
+                  component="span"
+                  sx={{ color: 'rgba(255,255,255,0.4)', fontSize: '12px', fontStyle: 'italic' }}
+                >
+                  (demo)
+                </Typography>
+              </Typography>
               <Typography
                 variant="h2"
                 fontWeight="700"

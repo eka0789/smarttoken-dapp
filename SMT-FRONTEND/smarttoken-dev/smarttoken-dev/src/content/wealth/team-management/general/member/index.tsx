@@ -153,6 +153,7 @@ const Member = () => {
           direction="row"
           justifyContent="center"
           alignItems="stretch"
+          className="stagger-children"
         >
           {/* LEVEL GROUP */}
           <Grid item xs={12}>

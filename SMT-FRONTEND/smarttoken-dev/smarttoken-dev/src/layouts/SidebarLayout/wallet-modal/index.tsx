@@ -32,6 +32,15 @@ const WalletDialog: React.FC<ParentProps> = ({ onClose, open }) => {
   const classes = WalletModalStyle();
   const { loginWallet } = useAuth();
 
+  // Panduan memilih wallet (Binance Academy) — dibuka di tab baru
+  const openWalletGuide = () => {
+    window.open(
+      'https://academy.binance.com/en/articles/types-of-crypto-wallets',
+      '_blank',
+      'noopener,noreferrer'
+    );
+  };
+
   const handleClose = () => {
     isSetAccept(false);
     onClose();
@@ -92,7 +101,8 @@ const WalletDialog: React.FC<ParentProps> = ({ onClose, open }) => {
       open={open}
       PaperProps={{
         style: {
-          maxWidth: '900px'
+          maxWidth: '900px',
+          animation: 'smt-pop-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both'
         }
       }}
     >
@@ -242,6 +252,7 @@ const WalletDialog: React.FC<ParentProps> = ({ onClose, open }) => {
                   marginTop="20px"
                   boxShadow="21px 21px 10px rgba(0, 0, 0, 0.5)"
                   borderRadius="35px"
+                  onHandleClick={openWalletGuide}
                 >
                   Learn more
                 </CustomButton>
@@ -257,6 +268,7 @@ const WalletDialog: React.FC<ParentProps> = ({ onClose, open }) => {
                   marginTop="20px"
                   boxShadow="21px 21px 10px rgba(0, 0, 0, 0.5)"
                   borderRadius="20px"
+                  onHandleClick={openWalletGuide}
                 >
                   Learn more
                 </CustomButton>

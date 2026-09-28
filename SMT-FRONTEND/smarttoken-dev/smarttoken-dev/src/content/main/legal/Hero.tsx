@@ -1,4 +1,4 @@
-import { Box, Hidden } from '@mui/material';
+import { Box, Hidden, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 const heroPath = {
@@ -62,6 +62,49 @@ function Hero() {
           alt={heroPath.name}
           className={classes.heroCustomStyle}
         />
+        {/* Overlay konten asli — menutup teks placeholder yang ada di dalam artwork hero */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            height: '100%',
+            width: '56%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'flex-end',
+            textAlign: 'right',
+            paddingRight: '56px',
+            background:
+              'linear-gradient(90deg, rgba(7, 12, 39, 0) 0%, rgba(7, 12, 39, 0.6) 12%, rgba(7, 12, 39, 0.97) 28%, rgba(7, 12, 39, 0.97) 100%)'
+          }}
+        >
+          <Typography
+            sx={{
+              color: '#E0A501',
+              fontSize: '30px',
+              fontWeight: 700,
+              textShadow: '4px 4px 6px rgba(0, 0, 0, 0.5)'
+            }}
+          >
+            Legal Agreement
+          </Typography>
+          <Typography
+            sx={{
+              color: '#EDEDED',
+              fontSize: '15px',
+              fontWeight: 500,
+              maxWidth: '420px',
+              mt: 1,
+              lineHeight: '22px',
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)'
+            }}
+          >
+            Platform information, Terms of Service, Privacy Policy and the
+            risk disclaimer for using Smart Ecosystem.
+          </Typography>
+        </Box>
       </Hidden>
       <Hidden lgUp>
         <Box

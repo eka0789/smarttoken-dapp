@@ -62,7 +62,7 @@ const BuySmt = () => {
                   variant="h3"
                   className={classes.currentSmtTypoRightStyle}
                 >
-                  $ {nFormatter(prices?.smt || 0, 4)}
+                  {prices?.smt ? `$ ${nFormatter(prices.smt, 4)}` : '$ --'}
                 </Typography>
               </RowBox>
             </RowBox>
@@ -102,7 +102,7 @@ const BuySmt = () => {
                   variant="h3"
                   className={classes.currentSmtTypoRightStyle}
                 >
-                  $ {nFormatter(prices?.smtc || 0, 4)}
+                  {prices?.smtc ? `$ ${nFormatter(prices.smtc, 4)}` : '$ --'}
                 </Typography>
               </RowBox>
             </RowBox>

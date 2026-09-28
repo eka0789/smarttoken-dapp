@@ -38,20 +38,38 @@ class ErrorBoundary extends React.Component<
           alignItems="center"
           justifyContent="center"
           minHeight="100vh"
-          bgcolor="#141414"
+          bgcolor="#070C27"
           color="#fff"
           textAlign="center"
           p={4}
+          className="animate-fade-in"
         >
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h4" gutterBottom className="gradient-text-gold">
             Something went wrong
           </Typography>
           <Typography variant="body1" color="textSecondary" paragraph>
             {this.state.error?.message || 'An unexpected error occurred.'}
           </Typography>
-          <Button variant="contained" color="primary" onClick={this.handleReset}>
-            Reload Application
-          </Button>
+          <Box display="flex" gap={2}>
+            <Button
+              variant="contained"
+              color="primary"
+              className="btn-shine hover-press"
+              onClick={this.handleReset}
+            >
+              Reload Application
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              className="hover-press"
+              onClick={() => {
+                window.location.href = '/main/dashboard';
+              }}
+            >
+              Go to Dashboard
+            </Button>
+          </Box>
         </Box>
       );
     }

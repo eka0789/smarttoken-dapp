@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import EmptyState from 'src/components/EmptyState';
 
 function createData(tags, message, status) {
   return { tags, message, status };
@@ -106,8 +107,8 @@ const colorGroup = {
 const GlobalTable = () => {
   const navigate = useNavigate();
 
-  const onHandleDetailClick = (): void => {
-    navigate('/main/messages/detail');
+  const onHandleDetailClick = (row?: any): void => {
+    navigate('/main/messages/detail', { state: { row } });
   };
 
   return (
@@ -122,8 +123,17 @@ const GlobalTable = () => {
           </tr>
         </thead>
         <tbody>
+          {rows.length === 0 && (
+            <tr>
+              <td colSpan={4}>
+
+                <EmptyState compact title="No global messages yet" description="Global announcements will appear here once available." />
+
+              </td>
+            </tr>
+          )}
           {rows.map((row, idx) => (
-            <tr key={idx} onClick={onHandleDetailClick}>
+            <tr key={idx} onClick={() => onHandleDetailClick(row)}>
               <td>{idx + 1}</td>
               <td>
                 <Box sx={{ color: colorGroup[row.tags] }}>{row.tags}</Box>

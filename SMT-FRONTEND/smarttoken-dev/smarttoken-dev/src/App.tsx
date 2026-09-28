@@ -7,6 +7,7 @@ import 'nprogress/nprogress.css';
 import { CssBaseline } from '@mui/material';
 import ThemeProvider from './theme/ThemeProvider';
 import { useEagerConnect } from './hooks/useEagerConnect';
+import NetworkGuard from './components/NetworkGuard';
 import { passUrl } from 'src/utils/ladder';
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
     <ThemeProvider>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <CssBaseline />
+        <NetworkGuard />
         {content}
       </LocalizationProvider>
     </ThemeProvider>

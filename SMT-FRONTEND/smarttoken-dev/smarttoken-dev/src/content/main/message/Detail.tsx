@@ -1,10 +1,12 @@
 import { Helmet } from 'react-helmet-async';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Hero from './Hero';
-import { Container, Grid, Box, Typography, Divider } from '@mui/material';
+import { Container, Grid, Box, Typography, Divider, Chip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import IconButton from '@mui/material/IconButton';
+import EmptyState from 'src/components/EmptyState';
+import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 
 const useStyles = makeStyles((theme) => ({
   // CONTAINER CUSTOM STYLE
@@ -27,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   // MESSAGE CONTENT STYLE
   contentStyle: {
     marginBottom: '15px !important',
-    lineHeight: '100% !important',
+    lineHeight: '150% !important',
     fontSize: '18px !important',
     fontWeight: '500 !important',
     color: '#EDEDED !important'
@@ -54,8 +56,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+interface MessageRow {
+  category?: string;
+  tags?: string;
+  message?: string;
+  status?: string;
+}
+
 const Detail = () => {
   const classes = useStyles();
+  const location = useLocation();
+  const row: MessageRow | undefined = (location.state as any)?.row;
 
   return (
     <>
@@ -80,7 +91,7 @@ const Detail = () => {
                   justifyContent="space-between"
                 >
                   <IconButton
-                    aria-label="vehicles"
+                    aria-label="back to messages"
                     sx={{ padding: '0px' }}
                     component={NavLink}
                     to="/main/messages"
@@ -88,35 +99,64 @@ const Detail = () => {
                     <ArrowBackIcon className={classes.headerTypoStyle} />
                   </IconButton>
                   <Typography color="#E0A501" fontSize="24px" marginLeft="26px">
-                    Lorem ipsum
+                    {row?.category || 'Message'}
                   </Typography>
                 </Box>
-                <Typography sx={{ float: 'right' }}>
-                  13.30 10/22/2021
-                </Typography>
+                <Box display="flex" alignItems="center" gap={1}>
+                  {row?.tags && (
+                    <Chip
+                      size="small"
+                      label={row.tags}
+                      sx={{
+                        color: '#E0A501',
+                        borderColor: 'rgba(224,165,1,0.4)',
+                        background: 'rgba(224,165,1,0.08)'
+                      }}
+                      variant="outlined"
+                    />
+                  )}
+                  {row?.status && (
+                    <Typography
+                      sx={{
+                        color: row.status === 'unread' ? '#FFCB00' : '#9e9e9e',
+                        fontWeight: 600,
+                        textTransform: 'capitalize'
+                      }}
+                    >
+                      {row.status}
+                    </Typography>
+                  )}
+                </Box>
               </Box>
               <Divider sx={{ background: '#000' }} />
               <Box className={classes.messageBodyStyle}>
-                <Typography className={classes.contentStyle}>
-                  Lorem ipsum dolor sit amet.
-                </Typography>
-                <Typography className={classes.contentStyle}>
-                  Duis vitae lacus vel tellus mattis vestibulum. Nunc eleifend
-                  tincidunt consequat. Ut sit amet quam blandit, luctus diam
-                  non, fringilla nulla. Praesent metus nisl, tristique a orci a,
-                  cursus bibendum mi. Etiam sagittis justo ut lorem lacinia
-                  blandit. Pellentesque quis porttitor magna.
-                </Typography>
-                <Typography className={classes.contentStyle}>
-                  Aliquam imperdiet accumsan augue eget maximus. Vestibulum eu
-                  lacinia enim, aliquet lobortis massa. Suspendisse consectetur
-                  nibh placerat, tincidunt nibh eu, egestas enim. Donec libero
-                  dolor, tristique at nib semper, ultricies lacinia ipsum.
-                  Nullam gravida malesuada pellentesque. Fusce in libero eget
-                  risus pulvinar ultricies. Vestibulum ictum nisi vel ante
-                  finibus faucibus eget eu turpis. Maecenas cursus dui eget
-                  libero consectetur, at vestibulum nibh efficitur.
-                </Typography>
+                {row?.message ? (
+                  <>
+                    <Typography className={classes.contentStyle} fontWeight="700">
+                      {row.message}
+                    </Typography>
+                    <Typography className={classes.contentStyle}>
+                      This notification was delivered through the Smart
+                      Ecosystem messages center. Personal notifications relate
+                      to your account (achievements, rewards, license state),
+                      while Global and Announcement messages are broadcast to
+                      all members.
+                    </Typography>
+                    <Typography className={classes.contentStyle}>
+                      Rewards and on-chain actions referenced in a message can
+                      always be verified on BscScan using the transaction
+                      history of your own wallet. If a message mentions a reward
+                      you believe is missing, check the relevant page (Rewards,
+                      Golden Tree, Achievement) before contacting support.
+                    </Typography>
+                  </>
+                ) : (
+                  <EmptyState
+                    icon={<MailOutlineRoundedIcon />}
+                    title="No message selected"
+                    description="Open the messages list and click a row to read its full content here."
+                  />
+                )}
               </Box>
             </Box>
           </Grid>

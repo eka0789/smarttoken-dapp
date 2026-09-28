@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Hero from './Hero';
 import { Container, Grid, Box, Button, Typography } from '@mui/material';
@@ -58,14 +59,73 @@ const LegalButton = styled(Button)({
   fontWeight: '600',
   textAlign: 'center',
   color: '#E8B500',
+  transition: 'all .25s ease',
   '&:hover': {
     background: 'linear-gradient(180deg, #FFCB00 0%, #936900 100%)',
     color: '#212121'
+  },
+  '&.legal-active': {
+    border: '2px solid #E0A501',
+    color: '#FFCB00',
+    boxShadow: '0 0 14px rgba(224, 165, 1, 0.35)'
   }
 });
 
+interface LegalSection {
+  key: string;
+  label: string;
+  title: string;
+  paragraphs: string[];
+}
+
+const sections: LegalSection[] = [
+  {
+    key: 'information',
+    label: 'Information',
+    title: 'About Smart Ecosystem',
+    paragraphs: [
+      'Smart Ecosystem is a fully on-chain rewards ecosystem running on BNB Smart Chain (BSC). The platform is composed of 10 upgradeable smart contracts covering the SMT and SMTC tokens, licenses (Smart Army), daily farming, the referral ladder, nobility achievements and the Golden Tree pool. All balances, rewards and ownership records live on-chain and can be verified on BscScan at any time.',
+      'This application is the user interface to those contracts. It does not hold your funds and cannot move assets on your behalf: every transaction is signed from your own wallet. Without a connected wallet, the app runs in read-only mode and certain values are shown as demo placeholders.',
+      'Nothing on this page constitutes financial advice. Digital assets are volatile and you may lose part or all of your funds. Always do your own research before purchasing licenses or tokens.'
+    ]
+  },
+  {
+    key: 'tos',
+    label: 'Term of Service',
+    title: 'Terms of Service',
+    paragraphs: [
+      'By connecting a wallet and using Smart Ecosystem you agree to use the platform at your own risk and in compliance with the laws of your jurisdiction. You are solely responsible for the security of your wallet, seed phrase and private keys.',
+      'License purchases (Smart Army) and reward mechanics operate through smart contracts. Once a transaction is confirmed on-chain it is final and cannot be reversed by the team. Reward amounts, tax rates and pool distributions are determined by the contract logic described in the on-chain code.',
+      'The team may upgrade the contracts through the UUPS proxy mechanism to fix bugs or improve the system. Material changes will be announced through the in-app Messages page and official community channels.'
+    ]
+  },
+  {
+    key: 'privacy',
+    label: 'Privacy Policy',
+    title: 'Privacy Policy',
+    paragraphs: [
+      'Smart Ecosystem does not run KYC and does not collect your name, email or identity documents. The data the application stores is limited to what is required to operate: your public wallet address, locally stored preferences (such as sidebar and connection settings) in your browser, and the on-chain transaction history that is public by nature.',
+      'If you opt in to analytics or error tracking (Sentry), anonymised technical data such as error messages and browser type may be collected to improve stability. This optional service is disabled unless a tracking key is configured by the operator.',
+      'We never sell personal data. Blockchain data is public: anyone, including us, can read the transactions associated with your address.'
+    ]
+  },
+  {
+    key: 'disclaimer',
+    label: 'Disclaimer',
+    title: 'Risk Disclaimer',
+    paragraphs: [
+      'SMT and SMTC are utility tokens of the ecosystem. Their market price can go down as well as up, and liquidity may be limited. Nothing in this application guarantees future value, profit or returns.',
+      'Smart contract risk exists even though the contracts follow battle-tested OpenZeppelin upgradeable patterns. Audit results and dependency status are documented in the project docs folder. Never invest more than you can afford to lose.',
+      'Participation in farming, licenses, quests and the Golden Tree pool may be restricted in some jurisdictions. It is your responsibility to verify that using this platform is legal where you live.'
+    ]
+  }
+];
+
 const Legal = () => {
   const classes = useStyles();
+  const [active, setActive] = useState<string>('information');
+
+  const current = sections.find((s) => s.key === active) || sections[0];
 
   return (
     <>
@@ -87,37 +147,41 @@ const Legal = () => {
               justifyContent="space-between"
               className={classes.customButtonGroupStyle}
             >
-              <LegalButton>Information</LegalButton>
-              <LegalButton>Term of Service</LegalButton>
-              <LegalButton>Privacy Policy</LegalButton>
-              <LegalButton>Disclaimer</LegalButton>
+              {sections.map((section) => (
+                <LegalButton
+                  key={section.key}
+                  className={section.key === active ? 'legal-active hover-press' : 'hover-press'}
+                  onClick={() => setActive(section.key)}
+                >
+                  {section.label}
+                </LegalButton>
+              ))}
             </Box>
           </Grid>
           <Grid item xs={12}>
             <CustomCard width={'100%'} height={'auto'} borderRadius={'20px'}>
-              <Box className={classes.CardBoxPadding}>
-                {Array(5)
-                  .fill(0)
-                  .map((con, idx) => {
-                    return (
-                      <Typography
-                        key={idx}
-                        marginBottom="20px"
-                        fontSize="18px"
-                        color="#EDEDED"
-                      >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Praesent elementum dolor id tristique egestas. In
-                        feugiat, eros ut dignissim porta, enim dolor sodales
-                        sapien, ac sollicitudin augue diam a massa. Phasellus
-                        vestibulum, libero vel tincidunt vulputate, massa lacus
-                        eleifend ligula, sed luctus purus nunc eu massa. Donec
-                        pharetra iaculis nulla, imperdiet tempor eros ultrices
-                        accumsan. Etiam eget nisi sit amet mauris laoreet
-                        tincidunt.
-                      </Typography>
-                    );
-                  })}
+              <Box
+                key={current.key}
+                className={classes.CardBoxPadding + ' animate-fade-in'}
+              >
+                <Typography
+                  variant="h2"
+                  marginBottom="24px"
+                  color="#E0A501"
+                  fontWeight="700"
+                >
+                  {current.title}
+                </Typography>
+                {current.paragraphs.map((paragraph, idx) => (
+                  <Typography
+                    key={idx}
+                    marginBottom="20px"
+                    fontSize="18px"
+                    color="#EDEDED"
+                  >
+                    {paragraph}
+                  </Typography>
+                ))}
               </Box>
             </CustomCard>
           </Grid>

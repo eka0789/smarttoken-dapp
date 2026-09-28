@@ -67,16 +67,16 @@ function createData(quest, username, status, amount) {
 }
 
 const rows = [
-  createData('Loremipsumquest', 'Mark77', 'Claimed', '0.5 SMTC'),
-  createData('Loremipsumquest', 'Josh51', 'Pending', '0.5 SMTC'),
-  createData('Loremipsumquest', 'Eugen333', 'Rejected', '0.5 SMTC'),
-  createData('Loremipsumquest', 'Carlmeyr', 'Pending', '1 SMTC'),
-  createData('Loremipsumquest', 'Korrrraaa', 'Pending', '1 SMTC'),
-  createData('Loremipsumquest', 'Cottoncandy', 'Claimed', '1 SMTC'),
-  createData('Loremipsumquest', 'Carole654', 'Claimed', '1 SMTC'),
-  createData('Loremipsumquest', 'Projectbunny', 'Claimed', '1 SMTC'),
-  createData('Loremipsumquest', 'KianaKaslana', 'Rejected', '1 SMTC'),
-  createData('Loremipsumquest', 'Thisisanickname', 'Rejected', '1 SMTC')
+  createData('Early Run', 'Mark77', 'Claimed', '0.5 SMTC'),
+  createData('Sweet Army', 'Josh51', 'Pending', '0.5 SMTC'),
+  createData('Elon’s Eye', 'Eugen333', 'Rejected', '0.5 SMTC'),
+  createData('Loyal Army', 'Carlmeyr', 'Pending', '1 SMTC'),
+  createData('Sweet Army', 'Korrrraaa', 'Pending', '1 SMTC'),
+  createData('Early Run', 'Cottoncandy', 'Claimed', '1 SMTC'),
+  createData('Loyal Army', 'Carole654', 'Claimed', '1 SMTC'),
+  createData('Elon’s Eye', 'Projectbunny', 'Claimed', '1 SMTC'),
+  createData('Early Run', 'KianaKaslana', 'Rejected', '1 SMTC'),
+  createData('Sweet Army', 'Thisisanickname', 'Rejected', '1 SMTC')
 ];
 
 const colorGroup = {

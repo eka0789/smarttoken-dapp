@@ -46,6 +46,7 @@ const GeneralDetail = () => {
           direction="row"
           justifyContent="center"
           alignItems="stretch"
+          className="stagger-children"
         >
           {/* LEFT SIDE BAR */}
           <Grid item xs={12} md={3} className={classes.customLeftSideStyle}>

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import EmptyState from 'src/components/EmptyState';
 
 function createData(tags, message, status) {
   return { tags, message, status };
@@ -103,8 +104,8 @@ const colorGroup = {
 const PersonalTable = () => {
   const navigate = useNavigate();
 
-  const onHandleDetailClick = (): void => {
-    navigate('/main/messages/detail');
+  const onHandleDetailClick = (row?: any): void => {
+    navigate('/main/messages/detail', { state: { row } });
   };
 
   return (
@@ -119,8 +120,17 @@ const PersonalTable = () => {
           </tr>
         </thead>
         <tbody>
+          {rows.length === 0 && (
+            <tr>
+              <td colSpan={4}>
+
+                <EmptyState compact title="No personal messages yet" description="Personal messages addressed to you will appear here." />
+
+              </td>
+            </tr>
+          )}
           {rows.map((row, idx) => (
-            <tr key={idx} onClick={onHandleDetailClick}>
+            <tr key={idx} onClick={() => onHandleDetailClick(row)}>
               <td>{idx + 1}</td>
               <td>
                 <Box sx={{ color: colorGroup[row.tags] }}>{row.tags}</Box>

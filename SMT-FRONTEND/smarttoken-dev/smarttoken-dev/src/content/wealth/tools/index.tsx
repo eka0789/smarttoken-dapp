@@ -48,27 +48,27 @@ const toolsInfo = [
   {
     name: 'Crossline Breaker',
     path: '/static/img/wealth_tools/tools0.svg',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultrices condimentum ligula, ac porttitor odio commodo sit amet. Nullam at ullamcorper turpis. Cras accumsan euismod purus, vitae viverra nisi mollis non. Sed mollis auctor turpis, et finibus dui.'
+    desc: 'Break through cross-line boundaries: identify members outside your direct line who are building volume and reach them with the right message to activate your wider network.'
   },
   {
     name: 'Event Setup',
     path: '/static/img/wealth_tools/tools1.svg',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultrices condimentum ligula, ac porttitor odio commodo sit amet. Nullam at ullamcorper turpis. Cras accumsan euismod purus, vitae viverra nisi mollis non. Sed mollis auctor turpis, et finibus dui.'
+    desc: 'Plan and host offline or online Smart Ecosystem events. Prepare agenda materials, registration flows and follow-up steps to convert attendees into license holders.'
   },
   {
     name: 'Raise Flag',
     path: '/static/img/wealth_tools/tools2.svg',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultrices condimentum ligula, ac porttitor odio commodo sit amet. Nullam at ullamcorper turpis. Cras accumsan euismod purus, vitae viverra nisi mollis non. Sed mollis auctor turpis, et finibus dui.'
+    desc: 'Mark your milestone achievements and show your team how far you have climbed the ladder — a motivational marker you can share across your referral network.'
   },
   {
     name: 'Challenge Team Member',
     path: '/static/img/wealth_tools/tools3.svg',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultrices condimentum ligula, ac porttitor odio commodo sit amet. Nullam at ullamcorper turpis. Cras accumsan euismod purus, vitae viverra nisi mollis non. Sed mollis auctor turpis, et finibus dui.'
+    desc: 'Create friendly volume and growth challenges for your downline. Track who answers the call and reward the most consistent builders in your team.'
   },
   {
     name: 'Presentation Tools',
     path: '/static/img/wealth_tools/tools4.svg',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultrices condimentum ligula, ac porttitor odio commodo sit amet. Nullam at ullamcorper turpis. Cras accumsan euismod purus, vitae viverra nisi mollis non. Sed mollis auctor turpis, et finibus dui.'
+    desc: 'Ready-to-use Smart Ecosystem presentation assets: slides, talking points and shareable visuals to introduce the ecosystem to prospects and new members.'
   }
 ];
 
@@ -159,7 +159,7 @@ const Tools = () => {
                           <ToolButton
                             onClick={() => onHandleTool(content.name)}
                           >
-                            [button]
+                            Coming soon
                           </ToolButton>
                         </Box>
                         <Box marginTop={'20px'}>

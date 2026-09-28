@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Box, Hidden } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import EmptyState from 'src/components/EmptyState';
 
 function createData(category, tags, message, status) {
   return { category, tags, message, status };
@@ -134,8 +135,8 @@ const colorGroup = {
 const AllTable = () => {
   const navigate = useNavigate();
 
-  const onHandleDetailClick = (): void => {
-    navigate('/main/messages/detail');
+  const onHandleDetailClick = (row?: any): void => {
+    navigate('/main/messages/detail', { state: { row } });
   };
 
   return (
@@ -153,8 +154,17 @@ const AllTable = () => {
           </tr>
         </thead>
         <tbody>
+          {rows.length === 0 && (
+            <tr>
+              <td colSpan={5}>
+
+                <EmptyState compact title="No messages yet" description="New messages and announcements will appear here once available." />
+
+              </td>
+            </tr>
+          )}
           {rows.map((row, idx) => (
-            <tr key={idx} onClick={onHandleDetailClick}>
+            <tr key={idx} onClick={() => onHandleDetailClick(row)}>
               <td>{idx + 1}</td>
               <td>
                 <Box sx={{ color: colorGroup[row.category] }}>

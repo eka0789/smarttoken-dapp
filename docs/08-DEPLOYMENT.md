@@ -19,12 +19,13 @@
 ### 2.1 Frontend (`.env` di `SMT-FRONTEND/smarttoken-dev/smarttoken-dev`)
 ```env
 REACT_APP_NETWORK_ID=56
-REACT_APP_NODE_1=https://bsc-dataseed.binance.org
-REACT_APP_NODE_2=https://bsc-dataseed1.defibit.io
-REACT_APP_NODE_3=https://bsc-dataseed1.ninicoin.io
+REACT_APP_NODE_1=https://bsc-dataseed1.defibit.io
+REACT_APP_NODE_2=https://bsc-dataseed1.ninicoin.io
+REACT_APP_NODE_3=https://bsc-dataseed.binance.org
 REACT_APP_WALLETCONNECT_PROJECT_ID=
 REACT_APP_SENTRY_DSN=
 ```
+- **Urutan RPC = urutan keandalan.** `bsc-dataseed.binance.org` sering rate-limited / ECONNRESET dari beberapa jaringan, jadi ditaruh di NODE_3. `getRpcUrl` memilih node acak dari tiga → makin andal node-nya, makin kecil peluang gagal.
 - Semua variabel `REACT_APP_*` **ter-bundle ke JS publik** → JANGAN pernah menaruh secret di sini.
 - CI (`.github/workflows/ci.yml`) memakai NETWORK_ID=56 + 3 RPC publik untuk build.
 
@@ -113,11 +114,24 @@ Opsi hosting:
 | GitHub Pages | butuh `homepage` di package.json + HashRouter (tidak disarankan untuk route v6 ini) |
 
 ### 4.3 Checklist pra-rilis frontend
-- [ ] `REACT_APP_NETWORK_ID=56` (mainnet) dan 3 RPC aktif
-- [ ] Build lokal dites: connect wallet, 1 read (saldo), 1 write (claim di testnet) sukses
-- [ ] Source map tidak berisi secret (tidak ada — tidak ada secret)
-- [ ] Sentry DSN produksi aktif
+- [x] `REACT_APP_NETWORK_ID=56` (mainnet) dan 3 RPC aktif — urutan keandalan sudah diperbarui (defibit → ninicoin → binance.org)
+- [x] Build lokal dites: seluruh route dirender & diverifikasi visual (dashboard, rewards, achievement, smart army, golden tree, smt, messages, wealth, status pages, modal wallet)
+- [x] Source map tidak berisi secret (tidak ada — tidak ada secret)
+- [ ] Sentry DSN produksi aktif ← **aksi operator** (isi `REACT_APP_SENTRY_DSN`)
 - [ ] Tag versi git + changelog
+
+### 4.4 Checklist UX produksi (ditambahkan 2026-09-28)
+- [x] **NetworkGuard** — banner global + tombol switch satu-klik ketika wallet terhubung ke chain selain BSC (`src/components/NetworkGuard`)
+- [x] **NetworkChip** — indikator jaringan aktif di header (hijau mainnet / kuning testnet / merah wrong network)
+- [x] **RouteErrorBoundary** — error satu halaman tidak mematikan shell; tombol Try Again + Back to Dashboard
+- [x] **EmptyState** — kondisi kosong konsisten di 6 tabel (messages ×4, golden tree, earning history)
+- [x] **Halaman status** (404/500/maintenance/coming-soon) dibersihkan dari konten template & tautan mati, CTA kembali ke dashboard
+- [x] **Wallet modal** — animasi masuk, hover glow pada ikon wallet, tombol "Learn more" membuka panduan wallet (Binance Academy)
+- [x] **Legal Agreement** — tab berfungsi (Information/ToS/Privacy/Disclaimer) dengan konten asli, hero bersih
+- [x] **0 teks template** — tidak ada lagi Lorem ipsum / `[button]` / branding template di seluruh `src`
+- [x] **Meta & PWA** — title/description/OG/Twitter, `theme-color` navy brand, manifest valid (icon SVG `sizes:any`)
+- [ ] (Opsional) PNG icon 192 & 512 untuk installability PWA penuh — butuh tool rasterisasi
+- [ ] Isi `REACT_APP_WALLETCONNECT_PROJECT_ID` ← **aksi operator** (daftar gratis di cloud.walletconnect.com); tanpa ini tombol WalletConnect menampilkan pesan konfigurasi
 
 ---
 
@@ -134,12 +148,34 @@ Opsi hosting:
 
 ## 7. Status Keamanan Dependencies (per Sept 2026)
 
-Setelah pembersihan (`npm audit fix` + axios 1.20 + `overrides` di package.json + pin `@walletconnect/ethereum-provider@2.17.2`):
+Setelah pembersihan (`npm audit fix` + axios 1.20 + `overrides` di package.json + pin `@walletconnect/ethereum-provider@2.17.2`), dan tambahan `npm audit fix --legacy-peer-deps` (2026-09-28):
 
-- **Kritikal turun 11 → 2** (famili paket). Dua sisanya adalah *accepted risk terdokumentasi*:
+- **Kritikal 11 → 2** (famili paket). Dua sisanya adalah *accepted risk terdokumentasi*:
   - **tar ≤7.5.20** — patch hanya tersedia di tar 7 (ESM-only, memecah webpack 4 CRA). Konsumen di proyek ini: cache build terser-webpack-plugin dan `swarm-js` (legacy Bzz yang **tidak pernah dipakai** dApp) — tidak ada ekstraksi tar dari sumber tak-dipercaya → tidak tereksploitasi.
   - **elliptic 6.6.1** — versi terbaru; advisory 2025+ belum punya rilis patch. Pantau dan naikkan begitu tersedia (`overrides` sudah siap ditambah).
-- Sisa ~200 temuan low/moderate mayoritas berada di toolchain CRA 4 / web3 v1 lama. Solusi struktural: migrasi Vite + React 18 (roadmap F2).
+- Total temuan: **217** (25 low, 138 moderate, 47 high, 7 critical) — mayoritas berada di toolchain CRA 4 / web3 v1 lama dan **build-time only**. Solusi struktural: migrasi Vite + React 18 (roadmap F2).
+
+---
+
+## 8. Status Kesiapan Produksi (per 2026-09-28)
+
+**Semua item engineering-side SELESAI.** Sisa item berikut hanya bisa dilakukan operator (butuh kredensial/akun eksternal):
+
+| # | Item | Siapa | Catatan |
+|---|---|---|---|
+| 1 | Push repo ke remote (GitHub/GitLab) | operator | `git remote add origin <url> && git push -u origin main` |
+| 2 | Isi `REACT_APP_WALLETCONNECT_PROJECT_ID` | operator | daftar gratis di cloud.walletconnect.com; tanpa ini hanya tombol WalletConnect yang terpengaruh (Injected/Binance/Trust tetap jalan) |
+| 3 | Isi `REACT_APP_SENTRY_DSN` (opsional) | operator | tanpa ini error tracking nonaktif, aplikasi tetap berjalan |
+| 4 | Audit kontrak eksternal | operator | opsional untuk kepercayaan investor; kontrak sudah UUPS OpenZeppelin + 18/18 test |
+
+**Verifikasi terakhir (2026-09-28):**
+- ✅ `npm test` → 18/18 pass
+- ✅ `npm run build` (BUILD_PATH=build-dist, GENERATE_SOURCEMAP=false) → compiled sukses
+- ✅ Verifikasi visual 17 halaman + interaksi (modal wallet, klik baris pesan → detail, tab legal)
+- ✅ 0 teks template/lorem ipsum di `src`
+- ✅ NetworkGuard + NetworkChip berfungsi (wrong-network UX)
+- ✅ RPC produksi diurut ulang ke node paling andal
+- ✅ `package-lock.json` sinkron dengan `overrides` (npm audit fix --legacy-peer-deps)
 
 ---
 

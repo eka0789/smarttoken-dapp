@@ -32,3 +32,15 @@ cp .env.example .env && npm install && npx hardhat test
 ## Dokumentasi
 
 👉 **[docs/README.md](docs/README.md)** — BRD · PRD · FRD · Technical Guide · Architecture & Diagrams · Smart Contracts · API Reference · Deployment · Contributing · Glossary.
+
+## Status Kesiapan Produksi (per 2026-09-28)
+
+✅ **Semua item engineering-side selesai** — 18/18 test pass, build produksi sukses, 17 halaman terverifikasi visual, 0 teks template, NetworkGuard/error boundaries/empty states terpasang.
+
+Sisa aksi **operator** (butuh akun eksternal, bukan kode):
+1. Push repo ke remote (`git remote add origin <url> && git push -u origin main`)
+2. Isi `REACT_APP_WALLETCONNECT_PROJECT_ID` (daftar gratis di cloud.walletconnect.com)
+3. Isi `REACT_APP_SENTRY_DSN` (opsional, error tracking)
+4. Audit kontrak eksternal (opsional, untuk kepercayaan investor)
+
+Detail lengkap: [docs/08-DEPLOYMENT.md §8](docs/08-DEPLOYMENT.md).

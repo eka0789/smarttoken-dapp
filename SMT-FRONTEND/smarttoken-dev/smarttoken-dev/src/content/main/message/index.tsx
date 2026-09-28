@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Container, Grid, Box } from '@mui/material';
+import { Container, Grid, Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Hero from './Hero';
 import AllTable from './AllTable';
@@ -57,19 +57,36 @@ const Message = () => {
             <Box
               display="flex"
               alignItems="center"
-              sx={{
-                height: '32px',
-                background: '#695400',
-                borderRadius: '10px',
-                textAlign: 'center',
-                width: 'fit-content'
-              }}
+              justifyContent="space-between"
+              width="100%"
             >
-              <MultiTabButton 
-                titles='All, Personal, Global, Announcement'
-                currentValue={tabValue}
-                onHandleClick={handleClickTab}
-              />
+              <Box
+                display="flex"
+                alignItems="center"
+                sx={{
+                  height: '32px',
+                  background: '#695400',
+                  borderRadius: '10px',
+                  textAlign: 'center',
+                  width: 'fit-content'
+                }}
+              >
+                <MultiTabButton 
+                  titles='All, Personal, Global, Announcement'
+                  currentValue={tabValue}
+                  onHandleClick={handleClickTab}
+                />
+              </Box>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: 'rgba(255,255,255,0.45)',
+                  fontSize: '12px',
+                  fontStyle: 'italic'
+                }}
+              >
+                Notification list sample (demo)
+              </Typography>
             </Box>
           </Grid>
           {TableInfo[tabValue]}

@@ -25,7 +25,11 @@ const ConnectWallet = () => {
 
   return (
     <>
-      <ConnectWalletButton variant="contained" onClick={handleClickOpen}>
+      <ConnectWalletButton
+        variant="contained"
+        onClick={handleClickOpen}
+        className={!account ? 'animate-pulse-gold hover-press' : 'hover-press'}
+      >
         {account ? shorter(account) : 'Connect Wallet'}
       </ConnectWalletButton>
       <WalletDialog open={isOpen} onClose={handleClickClose} />

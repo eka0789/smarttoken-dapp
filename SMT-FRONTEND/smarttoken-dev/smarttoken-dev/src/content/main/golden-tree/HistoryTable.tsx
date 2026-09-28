@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material';
 import CustomCard from 'src/components/Card';
 import CustomTitle from 'src/components/Title/BadgeTitle';
 import { styled } from '@mui/material/styles';
+import EmptyState from 'src/components/EmptyState';
 
 const Root = styled('div')(
   ({ theme }) => `
@@ -119,6 +120,15 @@ const HistoryTable = () => {
                 </tr>
               </thead>
               <tbody>
+                {rows.length === 0 && (
+                  <tr>
+                    <td colSpan={4}>
+
+                      <EmptyState compact title="No transactions yet" description="Your Golden Tree reward history will appear here after your first claim." />
+
+                    </td>
+                  </tr>
+                )}
                 {rows.map((row, idx) => (
                   <tr key={idx}>
                     <td>{idx + 1}</td>

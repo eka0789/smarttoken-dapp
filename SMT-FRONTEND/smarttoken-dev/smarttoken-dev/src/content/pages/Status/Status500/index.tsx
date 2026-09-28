@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 import RefreshTwoToneIcon from '@mui/icons-material/RefreshTwoTone';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 import { styled } from '@mui/material/styles';
@@ -47,6 +48,7 @@ function Status500() {
   const [pending, setPending] = useState(false);
   function handleClick() {
     setPending(true);
+    window.location.reload();
   }
 
   return (
@@ -60,6 +62,7 @@ function Status500() {
           sx={{ height: '100%' }}
           alignItems="stretch"
           spacing={0}
+          className="stagger-children"
         >
           <Grid
             xs={12}
@@ -77,18 +80,21 @@ function Status500() {
                   src="/static/images/status/500.svg"
                   className="animate-pop"
                 />
-                <Typography variant="h2" sx={{ my: 2 }} className="animate-fade-up delay-200">
-                  There was an error, please try again later
+                <Typography
+                  variant="h2"
+                  sx={{ my: 2, color: '#FFFFFF' }}
+                  className="animate-fade-up delay-200"
+                >
+                  Something went wrong
                 </Typography>
                 <Typography
                   variant="h4"
-                  color="text.secondary"
                   fontWeight="normal"
-                  sx={{ mb: 4 }}
+                  sx={{ mb: 4, color: 'rgba(255,255,255,0.72)' }}
                   className="animate-fade-up delay-400"
                 >
-                  The server encountered an internal error and was not able to
-                  complete your request
+                  An unexpected error occurred on our side. Try refreshing the
+                  page — if the problem persists, please come back later.
                 </Typography>
                 <LoadingButton
                   onClick={handleClick}
@@ -99,8 +105,14 @@ function Status500() {
                 >
                   Refresh view
                 </LoadingButton>
-                <Button href="/overview" variant="contained" sx={{ ml: 1 }}>
-                  Go back
+                <Button
+                  href="/main/dashboard"
+                  variant="contained"
+                  startIcon={<HomeRoundedIcon />}
+                  className="btn-shine hover-press"
+                  sx={{ ml: 1 }}
+                >
+                  Go to Dashboard
                 </Button>
               </Box>
             </Container>
@@ -116,21 +128,25 @@ function Status500() {
             >
               <Container maxWidth="sm">
                 <Box textAlign="center">
-                  <TypographyPrimary variant="h1" sx={{ my: 2 }}>
-                    Tokyo Free Black React Admin Dashboard
+                  <TypographyPrimary variant="h1" sx={{ my: 2 }} className="gradient-text-gold">
+                    Smart Ecosystem
                   </TypographyPrimary>
                   <TypographySecondary
                     variant="h4"
                     fontWeight="normal"
                     sx={{ mb: 4 }}
                   >
-                    Tokyo Free Black React Admin Dashboard is built using the
-                    latest industry standards and features a clean and premium
-                    design style, making use of colors and accents to improve
-                    the user experience for all included flows and pages.
+                    The next-generation Web3 rewards ecosystem on BNB Smart
+                    Chain — farming, nobility ranks, golden tree pools and a
+                    7-level referral network, all fully on-chain.
                   </TypographySecondary>
-                  <Button href="/overview" size="large" variant="contained">
-                    Overview
+                  <Button
+                    href="/main/dashboard"
+                    size="large"
+                    variant="contained"
+                    className="btn-shine hover-press"
+                  >
+                    Back to Dashboard
                   </Button>
                 </Box>
               </Container>
