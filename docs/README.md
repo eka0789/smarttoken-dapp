@@ -20,6 +20,11 @@ Dokumentasi ini ditujukan untuk **Project Manager, Product Owner, Developer (Web
 | 08 | [Deployment & Environment Guide](08-DEPLOYMENT.md) | DevOps, Developer | Environment variables, deploy kontrak, deploy frontend, checklist rilis |
 | 09 | [Contributing & Workflow](09-CONTRIBUTING.md) | Semua engineer | Alur kerja git, definisi of done, code review, definition of quality |
 | 10 | [Glossary](10-GLOSSARY.md) | Semua | Kamus istilah (DeFi, blockchain, domain SMT) |
+| 11 | [Handover Checklist & Berita Acara](11-HANDOVER-CHECKLIST.md) | Owner, PM, Klien | Checklist serah terima aset, akses akun, verifikasi & form ttd |
+| 12 | [Operations & Maintenance Runbook](12-OPERATIONS-RUNBOOK.md) | Tim Operasional, DevOps | Monitoring harian, SOP likuiditas, rotasi kunci, konfigurasi kontrak |
+| 13 | [Security & Incident Response](13-SECURITY-INCIDENT-RESPONSE.md) | Tim Teknis, Auditor | Tanggap darurat P0-P3, penanganan insiden, upgrade UUPS darurat |
+| 14 | [Test & QA Report](14-TEST-AND-QA-REPORT.md) | QA, PM, Stakeholder | Laporan uji smart contract (18/18 pass), build frontend & kompatibilitas |
+| 15 | [User & Member Guide](15-USER-GUIDE.md) | Pengguna Umum, Komunitas | Buku manual koneksi wallet, Army, Ladder, Farm, Golden Tree, FAQ |
 
 ---
 
