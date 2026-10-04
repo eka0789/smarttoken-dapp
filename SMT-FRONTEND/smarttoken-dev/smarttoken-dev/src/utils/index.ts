@@ -180,8 +180,11 @@ export const ZERO_ADDRESS = ethers.constants.AddressZero;
 export const currentNetwork: number =
   parseInt(process.env.REACT_APP_NETWORK_ID || '') || 56;
 
+export const DEFAULT_BSC_RPC =
+  process.env.REACT_APP_NODE_1 || 'https://bsc-dataseed1.defibit.io';
+
 export const simpleProvider: Provider = new ethers.providers.JsonRpcProvider(
-  process.env.REACT_APP_NODE_1
+  DEFAULT_BSC_RPC
 );
 
 export interface Currency {
