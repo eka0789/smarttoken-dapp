@@ -18,11 +18,11 @@ const helpImages = [
 const HelpCard = () => {
 
   const openTutorial = () => {
-    window.open('https://smarttoken.finance/docTutorial.html');
+    window.open('https://smtdapp.vercel.app/docTutorial.html');
   }
 
   const openSmartPaper = () => {
-    window.open('https://smarttoken.finance/docPaper.html');
+    window.open('https://smtdapp.vercel.app/docPaper.html');
   }
 
   return (

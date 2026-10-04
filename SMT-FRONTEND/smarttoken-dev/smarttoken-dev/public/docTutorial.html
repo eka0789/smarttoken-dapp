@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tutorial — Smart Ecosystem (SMT)</title>
+    <meta name="description" content="Panduan langkah demi langkah menggunakan dApp Smart Ecosystem (SMT) di BNB Smart Chain." />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+      :root {
+        --gold: #f0b90b;
+        --gold-dark: #e0a501;
+        --bg: #10141a;
+        --card: #171c24;
+        --text: #1e2329;
+        --muted: #8b949e;
+        --line: #262d38;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #ededed;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.65;
+      }
+      .wrap { max-width: 880px; margin: 0 auto; padding: 40px 22px 90px; }
+      header { border-bottom: 1px solid var(--line); padding-bottom: 22px; margin-bottom: 34px; }
+      .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+      .brand img { width: 40px; height: 40px; border-radius: 10px; }
+      .brand span { font-weight: 700; font-size: 20px; letter-spacing: .2px; }
+      .brand span b { color: var(--gold); }
+      h1 { font-size: 30px; margin: 0 0 8px; line-height: 1.25; }
+      .sub { color: var(--muted); font-size: 15px; margin: 0; }
+      h2 {
+        font-size: 19px; margin: 40px 0 14px; padding-left: 12px;
+        border-left: 4px solid var(--gold);
+      }
+      p, li { font-size: 15px; color: #d7dce2; }
+      ol, ul { padding-left: 22px; }
+      li { margin-bottom: 8px; }
+      .note {
+        background: rgba(240,185,11,.08); border: 1px solid rgba(240,185,11,.35);
+        border-radius: 12px; padding: 14px 16px; margin: 20px 0; font-size: 14px;
+      }
+      .note strong { color: var(--gold); }
+      table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; }
+      th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--line); }
+      th { color: var(--gold); font-weight: 600; background: rgba(240,185,11,.05); }
+      code {
+        background: #0b0e13; border: 1px solid var(--line); border-radius: 6px;
+        padding: 2px 6px; font-size: 13px; color: var(--gold);
+      }
+      a { color: var(--gold); }
+      .cta {
+        display: inline-block; margin-top: 34px; background: var(--gold); color: #212121;
+        font-weight: 700; text-decoration: none; padding: 12px 26px; border-radius: 999px;
+        font-size: 15px;
+      }
+      .cta:hover { background: var(--gold-dark); }
+      footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <img src="/icon.png" alt="Smart Ecosystem" />
+          <span>Smart<b>Ecosystem</b></span>
+        </div>
+        <h1>Tutorial Penggunaan dApp</h1>
+        <p class="sub">Panduan langkah demi langkah untuk pengguna baru — dari menghubungkan dompet hingga memanen reward.</p>
+      </header>
+
+      <h2>1. Menghubungkan Dompet</h2>
+      <p>dApp mendukung MetaMask, Trust Wallet, Binance Web3 Wallet, dan WalletConnect. Pastikan jaringan aktif adalah <strong>BNB Smart Chain Mainnet</strong>:</p>
+      <table>
+        <tr><th>Parameter</th><th>Nilai</th></tr>
+        <tr><td>Network Name</td><td>BNB Smart Chain</td></tr>
+        <tr><td>RPC URL</td><td><code>https://bsc-dataseed.binance.org/</code></td></tr>
+        <tr><td>Chain ID</td><td><code>56</code></td></tr>
+        <tr><td>Symbol</td><td><code>BNB</code></td></tr>
+        <tr><td>Explorer</td><td><a href="https://bscscan.com" target="_blank" rel="noreferrer">bscscan.com</a></td></tr>
+      </table>
+      <div class="note">
+        <strong>NetworkGuard:</strong> jika dompet Anda berada di jaringan lain, dApp otomatis menampilkan tombol untuk berpindah ke BSC. Saldo BNB diperlukan untuk biaya gas.
+      </div>
+
+      <h2>2. Aktivasi Smart Army</h2>
+      <ol>
+        <li>Buka menu <strong>Smart Army</strong> di sidebar.</li>
+        <li>Pilih tingkat lisensi yang tersedia (terdapat 4 tier).</li>
+        <li>Klik <strong>Aktivasi Lisensi</strong>, lalu setujui transaksi di dompet Anda.</li>
+        <li>Setelah transaksi sukses, Anda resmi tergabung dan menerima <strong>link referral unik</strong>.</li>
+      </ol>
+
+      <h2>3. Smart Ladder (Komisi Referral 7 Level)</h2>
+      <p>Komisi terdistribusi otomatis secara on-chain hingga 7 tingkat kedalaman tim Anda:</p>
+      <table>
+        <tr><th>Level</th><th>Porsi Distribusi</th></tr>
+        <tr><td>L1</td><td>50%</td></tr>
+        <tr><td>L2</td><td>5%</td></tr>
+        <tr><td>L3</td><td>5%</td></tr>
+        <tr><td>L4</td><td>7,5%</td></tr>
+        <tr><td>L5</td><td>7,5%</td></tr>
+        <tr><td>L6</td><td>12,5%</td></tr>
+        <tr><td>L7</td><td>12,5%</td></tr>
+      </table>
+      <p>Pantau jumlah anggota dan akumulasi komisi di menu <strong>Rewards</strong>. Komisi dapat diklaim kapan saja langsung ke dompet Anda.</p>
+
+      <h2>4. Farming &amp; Staking (Smart Farm)</h2>
+      <ol>
+        <li>Kunjungi menu <strong>Farm / Staking</strong>.</li>
+        <li>Pilih pool yang tersedia (SMT atau token LP).</li>
+        <li>Lakukan <strong>Approve</strong> token terlebih dahulu.</li>
+        <li>Masukkan jumlah, lalu klik <strong>Deposit / Stake</strong>.</li>
+        <li>Reward bertambah real-time — panen melalui tombol <strong>Harvest</strong>.</li>
+      </ol>
+
+      <h2>5. Membeli &amp; Menjual SMT</h2>
+      <p>Gunakan menu <strong>SMT → Get SMT</strong> untuk swap melalui PancakeSwap V2 yang terintegrasi di dalam dApp. Pajak (buy/sell/transfer) dihitung dan didistribusikan otomatis on-chain — Anda dapat memverifikasi setiap transaksi di BscScan.</p>
+
+      <h2>6. Golden Tree &amp; Nobility</h2>
+      <ul>
+        <li><strong>Golden Tree:</strong> reward kolektif per fase milestone komunitas.</li>
+        <li><strong>Nobility Achievement:</strong> gelar bangsawan berdasarkan kontribusi &amp; volume jaringan, membuka reward tambahan.</li>
+      </ul>
+
+      <h2>7. FAQ Singkat</h2>
+      <p><strong>Transaksi gagal (reverted)?</strong> Umumnya karena saldo BNB tidak cukup untuk gas, atau token belum di-<em>approve</em> sebelum deposit/swap.</p>
+      <p><strong>Saldo tidak muncul?</strong> Pastikan dompet terhubung ke Chain ID 56 dan alamat kontrak SMT benar: <code>0xf3F9B44b88CA47Ea583F6Fde50A8C853e3c09c28</code></p>
+
+      <a class="cta" href="/main/dashboard">Buka dApp →</a>
+
+      <footer>
+        Smart Ecosystem (SMT) · BNB Smart Chain Mainnet · Kontrak terverifikasi di BscScan.
+      </footer>
+    </div>
+  </body>
+</html>

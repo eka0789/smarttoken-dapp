@@ -10,7 +10,7 @@ const Learn = () => {
   const classes = IndexStyles(theme);
 
   const onHandleLearnMore = () => {
-    window.open('https://smarttoken.finance/docPaper.html');
+    window.open('https://smtdapp.vercel.app/docPaper.html');
   };
 
   return (

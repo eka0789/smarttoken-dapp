@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Whitepaper — Smart Ecosystem (SMT)</title>
+    <meta name="description" content="Whitepaper Smart Ecosystem (SMT): ekosistem reward on-chain yang transparan di BNB Smart Chain." />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+      :root {
+        --gold: #f0b90b;
+        --gold-dark: #e0a501;
+        --bg: #10141a;
+        --line: #262d38;
+        --muted: #8b949e;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #ededed;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.7;
+      }
+      .wrap { max-width: 880px; margin: 0 auto; padding: 40px 22px 90px; }
+      header { border-bottom: 1px solid var(--line); padding-bottom: 22px; margin-bottom: 34px; }
+      .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+      .brand img { width: 40px; height: 40px; border-radius: 10px; }
+      .brand span { font-weight: 700; font-size: 20px; }
+      .brand span b { color: var(--gold); }
+      h1 { font-size: 32px; margin: 0 0 8px; line-height: 1.2; }
+      .sub { color: var(--muted); font-size: 15px; margin: 0; }
+      h2 { font-size: 20px; margin: 44px 0 14px; padding-left: 12px; border-left: 4px solid var(--gold); }
+      h3 { font-size: 16px; margin: 26px 0 8px; color: #fff; }
+      p, li { font-size: 15px; color: #d7dce2; }
+      ul, ol { padding-left: 22px; }
+      li { margin-bottom: 7px; }
+      .lead { font-size: 16px; color: #e6eaef; }
+      .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 22px 0; }
+      .card { background: #171c24; border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+      .card .num { color: var(--gold); font-size: 24px; font-weight: 700; display: block; }
+      .card .lbl { color: var(--muted); font-size: 13px; }
+      table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; }
+      th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--line); }
+      th { color: var(--gold); font-weight: 600; background: rgba(240,185,11,.05); }
+      code { background: #0b0e13; border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; font-size: 13px; color: var(--gold); }
+      a { color: var(--gold); }
+      .notice {
+        background: rgba(240,185,11,.08); border: 1px solid rgba(240,185,11,.35);
+        border-radius: 12px; padding: 14px 16px; margin: 22px 0; font-size: 14px;
+      }
+      .cta {
+        display: inline-block; margin-top: 34px; background: var(--gold); color: #212121;
+        font-weight: 700; text-decoration: none; padding: 12px 26px; border-radius: 999px; font-size: 15px;
+      }
+      .cta:hover { background: var(--gold-dark); }
+      footer { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <img src="/icon.png" alt="Smart Ecosystem" />
+          <span>Smart<b>Ecosystem</b></span>
+        </div>
+        <h1>Whitepaper</h1>
+        <p class="sub">Ekosistem reward on-chain satu pintu — transparan, terverifikasi, dan tanpa backend tersentralisasi.</p>
+      </header>
+
+      <p class="lead">
+        Smart Ecosystem (SMT) menyatukan distribusi reward, sistem referral berjenjang, lisensi komunitas, dan
+        farming dalam satu dApp di BNB Smart Chain. Semua aturan ekonomi dijalankan oleh smart contract yang
+        dapat diaudit siapa pun di BscScan — bukan oleh basis data internal yang tidak terlihat.
+      </p>
+
+      <div class="cards">
+        <div class="card"><span class="num">10</span><span class="lbl">Kontrak UUPS terverifikasi</span></div>
+        <div class="card"><span class="num">7</span><span class="lbl">Level distribusi referral</span></div>
+        <div class="card"><span class="num">0</span><span class="lbl">Server backend (serverless)</span></div>
+        <div class="card"><span class="num">18/18</span><span class="lbl">Test lulus di CI</span></div>
+      </div>
+
+      <h2>1. Masalah</h2>
+      <ul>
+        <li><strong>Reward manual &amp; tidak transparan.</strong> Distribusi hadiah dikelola off-chain, sehingga anggota tidak punya cara memverifikasi bahwa mereka dibayar sesuai aturan.</li>
+        <li><strong>Referral bergaya ponzi.</strong> Banyak program mengandalkan rekrutmen tanpa nilai produk nyata dan tanpa sirkulasi on-chain yang dapat ditelusuri.</li>
+        <li><strong>DeFi terfragmentasi bagi pemula.</strong> Swap, staking, referral, dan lisensi tersebar di banyak platform — menyulitkan pengguna baru.</li>
+      </ul>
+
+      <h2>2. Solusi</h2>
+      <p>Tiga pilar distribusi otomatis yang seluruhnya berjalan on-chain:</p>
+      <ol>
+        <li><strong>Tax Engine otomatis.</strong> Setiap transaksi buy/sell/transfer memicu pajak yang langsung terdistribusi ke pool-pool tujuan sesuai persentase tetap.</li>
+        <li><strong>Smart Ladder 7 level.</strong> Komisi referral terbagi ke 7 tingkat kedalaman tim, dihitung dan dibayar oleh kontrak tanpa intervensi manual.</li>
+        <li><strong>Smart Army &amp; Smart Farm.</strong> Lisensi komunitas (4 tier) dan staking/reward yang menciptakan permintaan dan sirkulasi token nyata.</li>
+      </ol>
+
+      <h2>3. Arsitektur On-Chain</h2>
+      <p>Seluruh logika ekonomi dijalankan oleh kontrak di BNB Smart Chain Mainnet (Chain ID 56), menggunakan pola
+        <strong>UUPS proxy</strong> (OpenZeppelin) agar dapat di-upgrade secara terkendali di bawah kontrol akses berlapis.</p>
+      <table>
+        <tr><th>Komponen</th><th>Fungsi</th></tr>
+        <tr><td>SmartToken (SMT)</td><td>Token utama + tax engine otomatis</td></tr>
+        <tr><td>SmartComp</td><td>Registry on-chain alamat kontrak ekosistem</td></tr>
+        <tr><td>SmartArmy</td><td>Lisensi komunitas (4 tier)</td></tr>
+        <tr><td>SmartFarm</td><td>Staking &amp; distribusi reward</td></tr>
+        <tr><td>SmartLadder</td><td>Distribusi referral 7 level</td></tr>
+        <tr><td>GoldenTreePool</td><td>Reward kolektif per fase milestone</td></tr>
+      </table>
+
+      <h3>Alamat Kontrak</h3>
+      <ul>
+        <li>Token SMT: <code>0xf3F9B44b88CA47Ea583F6Fde50A8C853e3c09c28</code></li>
+        <li>Registry SmartComp: <code>0xF5a2F35c97cbfabd5ac9efAE4cC6cC021F6Bb19c</code></li>
+      </ul>
+      <div class="notice">
+        <strong>Serverless:</strong> frontend dApp tidak bergantung pada backend terpusat — semua pembacaan state
+        dilakukan langsung dari kontrak melalui RPC publik BSC. Tidak ada titik gagal tunggal yang menyimpan data pengguna.
+      </div>
+
+      <h2>4. Ekonomi Tax Engine</h2>
+      <p>Setiap transaksi dikenai pajak yang terdistribusi otomatis ke pool tujuan. Distribusi ini bersifat tetap dan
+        dapat diverifikasi on-chain pada setiap transaksi.</p>
+      <table>
+        <tr><th>Tujuan</th><th>Porsi</th></tr>
+        <tr><td>Pool 1</td><td>30%</td></tr>
+        <tr><td>Pool 2</td><td>10%</td></tr>
+        <tr><td>Pool 3</td><td>50%</td></tr>
+        <tr><td>Pool 4</td><td>10%</td></tr>
+      </table>
+
+      <h2>5. Keamanan</h2>
+      <ul>
+        <li>Pola <strong>UUPS proxy</strong> dengan kontrol akses berlapis (ownership + role).</li>
+        <li><strong>Runbook</strong> rotasi ownership &amp; prosedur incident response yang terdokumentasi.</li>
+        <li>Rencana <strong>audit eksternal</strong> sebagai tahap berikutnya di roadmap.</li>
+        <li>Seluruh kontrak <strong>terverifikasi</strong> di BscScan — source code dapat dibaca publik.</li>
+      </ul>
+
+      <h2>6. Roadmap</h2>
+      <ol>
+        <li><strong>Sekarang:</strong> live di mainnet, LP pair aktif, 18/18 test lulus, CI berjalan.</li>
+        <li><strong>Berikutnya:</strong> audit eksternal independen.</li>
+        <li><strong>Lalu:</strong> onboarding komunitas &amp; edukasi pengguna baru.</li>
+        <li><strong>Ke depan:</strong> integrasi baru &amp; perluasan utilitas token.</li>
+      </ol>
+
+      <div class="notice">
+        Dokumen ini bersifat informatif dan bukan ajakan investasi. Kinerja aset kripto mengandung risiko.
+        Selalu verifikasi alamat kontrak melalui registry resmi <code>SmartComp</code>.
+      </div>
+
+      <a class="cta" href="/main/dashboard">Buka dApp →</a>
+
+      <footer>
+        Smart Ecosystem (SMT) · BNB Smart Chain Mainnet · <a href="https://bscscan.com" target="_blank" rel="noreferrer">Lihat di BscScan</a>
+      </footer>
+    </div>
+  </body>
+</html>

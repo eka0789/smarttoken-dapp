@@ -15,7 +15,7 @@ const Achievement = () => {
   const classes = AchieveStyle(theme);
 
   const seeMore = () => {
-    window.open('https://smarttoken.finance/docTutorial.html');
+    window.open('https://smtdapp.vercel.app/docTutorial.html');
   };
 
   return (
