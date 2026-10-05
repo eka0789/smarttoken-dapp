@@ -4,6 +4,7 @@ import CustomCard from 'src/components/Card';
 import CustomButton from 'src/components/Button';
 import RowBox from 'src/components/Box/RowBox';
 import ColumnBox from 'src/components/Box/ColumnBox';
+import { currentNetwork, getContractInfo } from 'src/utils';
 
 const useStyles = makeStyles({
   outBoxStyle: {
@@ -28,8 +29,17 @@ const StatisticHeader = () => {
   const classes = useStyles();
 
   const openSmtcOnBscscan = () => {
+    const isTestnet = currentNetwork === 97;
+    const smtcAddress =
+      getContractInfo('SmartTokenCash')?.address ||
+      (isTestnet
+        ? '0x3235b29315eBEe65bFAb6F1C07c6f0F44aF05809'
+        : '0x6aedC09AE456651FccBBE357B57CA77A44f9da51');
+    const explorer = isTestnet
+      ? 'https://testnet.bscscan.com'
+      : 'https://bscscan.com';
     window.open(
-      'https://bscscan.com/token/0x6aedC09AE456651FccBBE357B57CA77A44f9da51',
+      `${explorer}/token/${smtcAddress}`,
       '_blank',
       'noopener,noreferrer'
     );

@@ -178,10 +178,13 @@ export const BIG_ZERO = BigNumber.from(0);
 export const ZERO_ADDRESS = ethers.constants.AddressZero;
 
 export const currentNetwork: number =
-  parseInt(process.env.REACT_APP_NETWORK_ID || '') || 56;
+  parseInt(process.env.REACT_APP_NETWORK_ID || '') || 97;
 
 export const DEFAULT_BSC_RPC =
-  process.env.REACT_APP_NODE_1 || 'https://bsc-dataseed1.defibit.io';
+  process.env.REACT_APP_NODE_1 ||
+  (currentNetwork === 97
+    ? 'https://data-seed-prebsc-1-s1.binance.org:8545'
+    : 'https://bsc-dataseed1.defibit.io');
 
 export const simpleProvider: Provider = new ethers.providers.JsonRpcProvider(
   DEFAULT_BSC_RPC
@@ -243,9 +246,30 @@ export const Currencies: { [key: number]: Currency[] } = {
       name: 'BNB',
       address: '0x0000000000000000000000000000000000000000',
       symbol: 'BNB',
-      chainId: 56,
+      chainId: 97,
       decimals: 18,
-      icon: ''
+      icon: 'https://s2.coinmarketcap.com/static/img/coins/200x200/7009.png',
+      fullName: 'Binance Coin (Testnet)',
+      projectName: 'Binance',
+      link: 'https://testnet.bscscan.com',
+      category: 'BSC Testnet',
+      highlight: true,
+      disabled: false
+    },
+    {
+      id: 'binance-usd',
+      name: 'BUSD',
+      address: '0xf7c71c408904b8d011533F9327494C4EbF845146',
+      symbol: 'BUSD',
+      chainId: 97,
+      decimals: 18,
+      icon: 'https://s2.coinmarketcap.com/static/img/coins/200x200/4687.png',
+      fullName: 'Binance USD (Testnet)',
+      projectName: 'Binance',
+      link: 'https://testnet.bscscan.com/address/0xf7c71c408904b8d011533F9327494C4EbF845146',
+      category: 'Stable coin',
+      highlight: true,
+      disabled: false
     }
   ]
 };

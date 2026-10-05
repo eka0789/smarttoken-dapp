@@ -3,22 +3,21 @@ import { Box, Button, Typography } from '@mui/material';
 import WarningAmberRoundedIcon from '@mui/icons-material/WarningAmberRounded';
 import { useWeb3React } from '@web3-react/core';
 import { toast } from 'react-hot-toast';
-import { Networks } from 'src/utils';
+import { currentNetwork, Networks } from 'src/utils';
 import { addNetwork, switchToNetwork } from 'src/utils/wallet';
 import 'src/theme/animations.css';
 
 /**
- * Guard jaringan global. Jika wallet terhubung ke chain selain BSC
- * (56 mainnet / 97 testnet), tampilkan banner permanen dengan tombol
- * switch satu-klik, karena semua kontrak hanya ada di BSC.
+ * Guard jaringan global. Jika wallet terhubung ke chain selain target network
+ * (default BSC Testnet 97 atau BSC Mainnet 56 sesuai config), tampilkan banner permanen
+ * dengan tombol switch satu-klik, karena semua kontrak ter-bind ke network target.
  */
 const NetworkGuard = () => {
   const { account, chainId, library } = useWeb3React();
   const [switching, setSwitching] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
-  const wrongNetwork =
-    !!account && !!chainId && chainId !== Networks.MainNet && chainId !== Networks.Testnet;
+  const wrongNetwork = !!account && !!chainId && chainId !== currentNetwork;
 
   useEffect(() => {
     setDismissed(false);
@@ -26,19 +25,22 @@ const NetworkGuard = () => {
 
   if (!wrongNetwork || dismissed) return null;
 
+  const targetNetworkName =
+    currentNetwork === Networks.Testnet ? 'BSC Testnet' : 'BSC Mainnet';
+
   const handleSwitch = async () => {
     setSwitching(true);
     try {
-      await switchToNetwork({ library, chainId: Networks.MainNet });
-      toast.success('Wallet switched to BSC Mainnet');
+      await switchToNetwork({ library, chainId: currentNetwork });
+      toast.success(`Wallet switched to ${targetNetworkName}`);
     } catch (error: any) {
       try {
-        await addNetwork({ library, chainId: Networks.MainNet });
+        await addNetwork({ library, chainId: currentNetwork });
       } catch (addError) {
         toast.error(
           error?.code === 4001
             ? 'Switch request was rejected in your wallet'
-            : 'Could not switch network. Please switch to BSC manually.'
+            : `Could not switch network. Please switch to ${targetNetworkName} manually.`
         );
       }
     } finally {
@@ -77,7 +79,7 @@ const NetworkGuard = () => {
           Wrong network detected
         </Typography>
         <Typography sx={{ color: 'rgba(255,255,255,0.75)', fontSize: 12.5 }}>
-          Smart Ecosystem runs on BNB Smart Chain. Your wallet is on chain&nbsp;
+          Smart Ecosystem is configured for {targetNetworkName} (Chain ID {currentNetwork}). Your wallet is on chain&nbsp;
           {chainId}. All contract actions will fail until you switch.
         </Typography>
       </Box>
@@ -98,7 +100,7 @@ const NetworkGuard = () => {
           '&:disabled': { color: 'rgba(33,33,33,0.55)' }
         }}
       >
-        {switching ? 'Switching…' : 'Switch to BSC'}
+        {switching ? 'Switching…' : `Switch to ${targetNetworkName}`}
       </Button>
     </Box>
   );

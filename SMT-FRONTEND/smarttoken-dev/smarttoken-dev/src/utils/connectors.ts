@@ -35,8 +35,8 @@ export const bscConnector = new BscConnector({
 export const walletconnect = WALLETCONNECT_PROJECT_ID
   ? new WalletConnectV2Connector({
       projectId: WALLETCONNECT_PROJECT_ID,
-      chains: [Networks.MainNet],
-      optionalChains: [Networks.Testnet],
+      chains: [currentNetwork],
+      optionalChains: [Networks.MainNet, Networks.Testnet],
       rpcMap: {
         [Networks.MainNet]: NETWORK_URLS[Networks.MainNet],
         [Networks.Testnet]: NETWORK_URLS[Networks.Testnet]
@@ -50,42 +50,32 @@ export const connectorsByName = {
   BinanceChainWallet: bscConnector
 };
 
-export const connectors =
-  +currentNetwork === 56
+export const connectors = [
+  {
+    title: 'Metamask',
+    icon: Metamask,
+    connectorId: ConnectorNames.Injected
+  },
+  {
+    title: 'TrustWallet',
+    icon: TrustWallet,
+    connectorId: ConnectorNames.Injected
+  },
+  ...(WALLETCONNECT_PROJECT_ID
     ? [
         {
-          title: 'Metamask',
-          icon: Metamask,
-          connectorId: ConnectorNames.Injected
-        },
-        {
-          title: 'TrustWallet',
-          icon: TrustWallet,
-          connectorId: ConnectorNames.Injected
-        },
-        // Hanya tampilkan WalletConnect jika Project ID v2 tersedia
-        ...(WALLETCONNECT_PROJECT_ID
-          ? [
-              {
-                title: 'WalletConnect',
-                icon: WalletConnect,
-                connectorId: ConnectorNames.WalletConnect
-              }
-            ]
-          : []),
-        {
-          title: 'Binance Chain Wallet',
-          icon: BinanceChain,
-          connectorId: ConnectorNames.BinanceChainWallet
+          title: 'WalletConnect',
+          icon: WalletConnect,
+          connectorId: ConnectorNames.WalletConnect
         }
       ]
-    : [
-        {
-          title: 'Metamask',
-          icon: Metamask,
-          connectorId: ConnectorNames.Injected
-        }
-      ];
+    : []),
+  {
+    title: 'Binance Chain Wallet',
+    icon: BinanceChain,
+    connectorId: ConnectorNames.BinanceChainWallet
+  }
+];
 
 export const connectorLocalStorageKey: string = 'smartTokenConnectorId';
 

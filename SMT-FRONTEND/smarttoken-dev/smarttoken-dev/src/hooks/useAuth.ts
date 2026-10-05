@@ -9,6 +9,7 @@ import {
   ConnectorNames,
   connectorsByName
 } from '../utils/connectors';
+import { currentNetwork } from '../utils';
 import { addNetwork } from '../utils/wallet';
 import { toast } from 'react-hot-toast';
 
@@ -26,7 +27,7 @@ const useAuth = () => {
 
             await addNetwork({
               library,
-              chainId: chainId || 56
+              chainId: currentNetwork || chainId || 97
             });
             activate(connector);
           } else if (error instanceof NoEthereumProviderError) {

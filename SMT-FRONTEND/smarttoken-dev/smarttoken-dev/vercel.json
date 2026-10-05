@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "create-react-app",
   "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "REACT_APP_NETWORK_ID=56 REACT_APP_NODE_1=https://bsc-dataseed1.defibit.io REACT_APP_NODE_2=https://bsc-dataseed1.ninicoin.io REACT_APP_NODE_3=https://bsc-dataseed.binance.org CI=false npm run build",
+  "buildCommand": "REACT_APP_NETWORK_ID=97 REACT_APP_NODE_1=https://data-seed-prebsc-1-s1.binance.org:8545 REACT_APP_NODE_2=https://bsc-testnet.publicnode.com REACT_APP_NODE_3=https://bsc-testnet-dataseed.binance.org CI=false npm run build",
   "outputDirectory": "build",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
