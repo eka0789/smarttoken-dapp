@@ -10,7 +10,7 @@ import {
   connectorsByName
 } from '../utils/connectors';
 import { currentNetwork } from '../utils';
-import { addNetwork } from '../utils/wallet';
+import { addNetwork, switchToNetwork } from '../utils/wallet';
 import { toast } from 'react-hot-toast';
 
 const useAuth = () => {
@@ -23,13 +23,32 @@ const useAuth = () => {
         activate(connector, async (error) => {
           window.localStorage.removeItem(connectorLocalStorageKey);
           if (error instanceof UnsupportedChainIdError) {
-            toast.error('Unsupported Chain Id Error. Check your chain Id!');
-
-            await addNetwork({
-              library,
-              chainId: currentNetwork || chainId || 97
-            });
-            activate(connector);
+            const targetChain = currentNetwork || 97;
+            try {
+              // Otomatis minta wallet beralih ke target network (BSC Testnet 97)
+              await switchToNetwork({ library, chainId: targetChain });
+              // Jika wallet berhasil switch, aktifkan kembali konektor
+              await activate(connector);
+            } catch (switchError: any) {
+              if (
+                switchError?.code === 4001 ||
+                switchError?.name === 'UserRejectedRequestError'
+              ) {
+                toast.error(
+                  `Switch to ${
+                    targetChain === 97 ? 'BSC Testnet' : 'BNB Chain'
+                  } was rejected in your wallet.`
+                );
+              } else {
+                toast.error(
+                  `Please switch your wallet to ${
+                    targetChain === 97
+                      ? 'BSC Testnet (Chain ID 97)'
+                      : 'BNB Smart Chain'
+                  }!`
+                );
+              }
+            }
           } else if (error instanceof NoEthereumProviderError) {
             toast.error('No provider was found!!');
           } else if (
@@ -52,7 +71,7 @@ const useAuth = () => {
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [activate]
+    [activate, library]
   );
 
   const logoutWallet = useCallback(() => {

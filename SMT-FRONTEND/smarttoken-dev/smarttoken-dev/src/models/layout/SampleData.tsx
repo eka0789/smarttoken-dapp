@@ -16,9 +16,9 @@ export const metamaskIcon = {
   desc: 'metamask icon'
 };
 export const walletConnectIcon = {
-  name: 'walletConect',
-  path: '/static/img/header/walletConnect.svg',
-  desc: 'walletConect icon'
+  name: 'walletConnect',
+  path: '/static/img/header/walletconnect.svg',
+  desc: 'walletConnect icon'
 };
 
 // Public Profile Sample Data

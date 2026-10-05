@@ -42,58 +42,61 @@ const WalletDialog: React.FC<ParentProps> = ({ onClose, open }) => {
   };
 
   const handleClose = () => {
-    isSetAccept(false);
     onClose();
   };
 
-  // Accept terms of service and privacy policy state
-  const [isAccept, isSetAccept] = useState<boolean>(false);
+  // Accept terms of service and privacy policy state - default true for seamless UX
+  const [isAccept, isSetAccept] = useState<boolean>(true);
   const onHandleCheck = (event: any): void => {
     isSetAccept(event.target.checked);
   };
-  // Binance network choose state
-  const [isBinance, isSetBinance] = useState<boolean>(false);
+  // Binance network choose state - default true since SMT runs on BSC
+  const [isBinance, isSetBinance] = useState<boolean>(true);
   const onHandleBinanceClick = (): void => {
-    isSetBinance((isBinance) => !isBinance);
+    isSetBinance((prev) => !prev);
   };
+
+  const ensureTermsAndNetwork = (): boolean => {
+    if (!isAccept) isSetAccept(true);
+    if (!isBinance) isSetBinance(true);
+    return true;
+  };
+
   // Trust wallet event
   const [isTrust, isSetTrust] = useState<boolean>(false);
   const onHandleTrustClick = (): void => {
-    if (isAccept && isBinance) {
-      isSetTrust((isTrust) => !isTrust);
-      loginWallet(ConnectorNames.Injected);
-      window.localStorage.setItem(
-        connectorLocalStorageKey,
-        ConnectorNames.Injected
-      );
-      handleClose();
-    }
+    ensureTermsAndNetwork();
+    isSetTrust(true);
+    loginWallet(ConnectorNames.Injected);
+    window.localStorage.setItem(
+      connectorLocalStorageKey,
+      ConnectorNames.Injected
+    );
+    handleClose();
   };
   // Metamask wallet event
   const [isMetamask, isSetMetamask] = useState<boolean>(false);
   const onHandleMetamaskClick = (): void => {
-    if (isAccept && isBinance) {
-      isSetMetamask((isMetamask) => !isMetamask);
-      loginWallet(ConnectorNames.Injected);
-      window.localStorage.setItem(
-        connectorLocalStorageKey,
-        ConnectorNames.Injected
-      );
-      handleClose();
-    }
+    ensureTermsAndNetwork();
+    isSetMetamask(true);
+    loginWallet(ConnectorNames.Injected);
+    window.localStorage.setItem(
+      connectorLocalStorageKey,
+      ConnectorNames.Injected
+    );
+    handleClose();
   };
   // Wallet Connect event
   const [isWalletConnect, isSetWalletConnect] = useState<boolean>(false);
   const onHandleWalletConnectClick = (): void => {
-    if (isAccept && isBinance) {
-      isSetWalletConnect((isWalletConnect) => !isWalletConnect);
-      loginWallet(ConnectorNames.WalletConnect);
-      window.localStorage.setItem(
-        connectorLocalStorageKey,
-        ConnectorNames.WalletConnect
-      );
-      handleClose();
-    }
+    ensureTermsAndNetwork();
+    isSetWalletConnect(true);
+    loginWallet(ConnectorNames.WalletConnect);
+    window.localStorage.setItem(
+      connectorLocalStorageKey,
+      ConnectorNames.WalletConnect
+    );
+    handleClose();
   };
 
   return (
@@ -121,6 +124,7 @@ const WalletDialog: React.FC<ParentProps> = ({ onClose, open }) => {
               <FormControlLabel
                 control={
                   <Checkbox
+                    checked={isAccept}
                     sx={{
                       padding: '0 !important',
                       marginLeft: '34px !important',

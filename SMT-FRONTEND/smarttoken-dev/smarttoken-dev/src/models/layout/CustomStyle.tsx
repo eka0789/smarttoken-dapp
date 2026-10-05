@@ -61,9 +61,13 @@ export const WalletModalStyle = makeStyles({
     }
   },
   walletBorderStyle: {
+    width: '120px',
+    height: '120px',
+    display: 'inline-block',
     outline: '3px solid #FFCB00',
     outlineOffset: '-3px',
     borderRadius: '50%',
+    cursor: 'pointer',
     transition: 'transform .25s ease, filter .25s ease',
     '&:hover': {
       transform: 'scale(1.07)',
@@ -89,6 +93,11 @@ export const WalletModalStyle = makeStyles({
     }
   },
   walletIconStyle: {
+    width: '120px',
+    height: '120px',
+    display: 'inline-block',
+    borderRadius: '50%',
+    cursor: 'pointer',
     transition: 'transform .25s ease, filter .25s ease',
     '&:hover': {
       transform: 'scale(1.07)',
