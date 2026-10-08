@@ -6,9 +6,9 @@ const isTestnet = currentNetwork === 97
 // Array of available nodes to connect to with robust public BSC fallbacks
 export const nodes = isTestnet
   ? [
-      process.env.REACT_APP_NODE_1 || 'https://data-seed-prebsc-1-s1.binance.org:8545',
-      process.env.REACT_APP_NODE_2 || 'https://bsc-testnet.publicnode.com',
-      process.env.REACT_APP_NODE_3 || 'https://bsc-testnet-dataseed.binance.org'
+      process.env.REACT_APP_NODE_1 || 'https://bsc-testnet.publicnode.com',
+      process.env.REACT_APP_NODE_2 || 'https://bsc-testnet.bnbchain.org',
+      process.env.REACT_APP_NODE_3 || 'https://bsc-testnet.drpc.org'
     ]
   : [
       process.env.REACT_APP_NODE_1 || 'https://bsc-dataseed1.defibit.io',

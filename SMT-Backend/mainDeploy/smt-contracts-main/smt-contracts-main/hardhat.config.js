@@ -13,7 +13,7 @@ const optimizerEnabled = true;
 // Public RPC endpoints; override via .env for higher throughput (Alchemy/QuickNode/etc).
 const RPC = {
   bscMainnet: process.env.BSC_MAINNET_RPC || 'https://bsc-dataseed.binance.org',
-  bscTestnet: process.env.BSC_TESTNET_RPC || 'https://data-seed-prebsc-1-s1.binance.org:8545',
+  bscTestnet: process.env.BSC_TESTNET_RPC || 'https://bsc-testnet.publicnode.com',
   polygonMainnet: process.env.POLYGON_MAINNET_RPC || 'https://polygon-rpc.com',
   ethMainnet: process.env.ETH_MAINNET_RPC || 'https://eth.llamarpc.com',
   fantom: process.env.FANTOM_RPC || 'https://rpc.ftm.tools',

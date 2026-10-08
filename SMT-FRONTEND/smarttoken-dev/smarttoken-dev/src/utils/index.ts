@@ -183,7 +183,7 @@ export const currentNetwork: number =
 export const DEFAULT_BSC_RPC =
   process.env.REACT_APP_NODE_1 ||
   (currentNetwork === 97
-    ? 'https://data-seed-prebsc-1-s1.binance.org:8545'
+    ? 'https://bsc-testnet.publicnode.com'
     : 'https://bsc-dataseed1.defibit.io');
 
 export const simpleProvider: Provider = new ethers.providers.JsonRpcProvider(

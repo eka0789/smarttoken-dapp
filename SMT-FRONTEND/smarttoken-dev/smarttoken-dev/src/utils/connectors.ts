@@ -11,7 +11,7 @@ import BinanceChain from 'src/icons/BinanceChain.svg';
 const NETWORK_URLS: { [key: number]: string } = {
   // FIX: sebelumnya RPC mainnet & testnet tertukar
   [Networks.MainNet]: `https://bsc-dataseed1.ninicoin.io`,
-  [Networks.Testnet]: `https://data-seed-prebsc-1-s1.binance.org:8545/`
+  [Networks.Testnet]: `https://bsc-testnet.publicnode.com`
 };
 
 const WALLETCONNECT_PROJECT_ID =
