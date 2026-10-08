@@ -30,13 +30,16 @@ semua kontrak frontend terverifikasi ada kode di testnet.
 ## 0. Prinsip Demo Day di Testnet
 
 1. **Gunakan wallet terpisah khusus demo** (jangan wallet utama). Buat akun baru di MetaMask khusus testnet.
-2. **Isi BNB testnet** (gas) dari faucet — beberapa faucet tersedia:
-   - <https://faucet.quicknode.com/binance/bnb-testnet> — **gratis murni** (tanpa bayar, tanpa saldo mainnet; cukup masukkan address wallet, claim ulang tiap 12 jam).
-   - <https://www.bnbchain.org/en/testnet-faucet> — **gratis** (klaim 0.3 tBNB per 24 jam, sekali per alamat). Catatan: tulisan "0.002 BNB on BSC Mainnet is needed" di halaman itu adalah *link penjelasan* cara dapat BNB, **bukan** syarat faucet.
-   - ⚠️ Hindari `testnet.bnbchain.org/faucet-smart` (skema lama) — di beberapa wilayah/versi sekarang meminta bukti kepemilikan BNB mainnet (0.002 BNB), jadi tidak gratis murni.
-   - ⚠️ Faucet Chainstack (<https://faucet.chainstack.com/bnb-testnet-faucet>) **berbayar/tidak murni gratis** — butuh API key + saldo minimal ETH di mainnet.
-   - ⚠️ Wallet deployer lama (`0x487762b44C73639B8907998f76A6a4A63A29D800`) memang masih punya ±3,5 tBNB, **tapi key-nya hilang / tidak bisa diakses** → jangan diandalkan (testnet-only, tidak ada nilai riil, aman diabaikan; jangan pakai alamat itu lagi).
-   - Kebutuhan gas demo kecil: ±0,002–0,005 tBNB sudah cukup untuk puluhan transaksi, jadi 1 klaim faucet (0,3 tBNB / QuickNode) lebih dari cukup untuk seluruh demo.
+2. **Isi BNB testnet (tBNB)** — siapa yang benar-benar gratis per 2026-10:
+   - ✅ **Discord/Telegram resmi BNB Chain (paling disarankan — tanpa syarat mainnet):**
+     buka tiket di Discord resmi BNB Chain, atau chat bot Telegram `@bnbchain_official_bot`, dengan pesan:
+     `I would like to get tBNB to my wallet 0x<alamat-anda>` → dapat sampai **0,3 tBNB/hari**.
+     (Sumber: docs resmi BNB Chain — "Request tBNB via Discord or Telegram".)
+   - ⚠️ Faucet web QuickNode (<https://faucet.quicknode.com/binance/bnb-testnet>) dan Chainstack
+     **SEKARANG MEMINTA saldo mainnet kecil** (QuickNode minta ETH/BNB di wallet, Chainstack butuh API key + 0,08 ETH mainnet) — untuk anti-abuse. **Bukan lagi "gratis murni".**
+   - ⚠️ Faucet resmi bnbchain.org (<https://www.bnbchain.org/en/testnet-faucet>) **juga minta 0,002 BNB di BSC Mainnet** pada alamat yang sama (pesan error: "This address has less than 0.002 BNB on BSC Mainnet"). Pemegang BNB mainnet kecil bisa menggunakannya; yang tidak punya, pakai Discord/Telegram di atas.
+   - ⚠️ Wallet deployer lama (`0x487762b44C73639B8907998f76A6a4A63A29D800`) memang masih ±3,5 tBNB, **tapi key-nya hilang** → jangan diandalkan (testnet-only, tanpa nilai riil; abaikan).
+   - Kebutuhan gas demo kecil: ±0,002–0,005 tBNB cukup untuk puluhan transaksi → 1 klaim (0,3 tBNB) lebih dari cukup.
    - Duduk diam 1–2 menit, cek saldo di MetaMask (jaringan BNB Smart Chain Testnet).
 3. **Siapkan 2–3 akun demo** (akun A = sponsor, akun B = anggota baru) — banyak fitur (referral,
    sponsor, ladder) jauh lebih hidup kalau punya 2 akun. Nanti bisa transfer SMT antar akun via BscScan.
