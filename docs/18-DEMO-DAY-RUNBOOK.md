@@ -35,7 +35,8 @@ semua kontrak frontend terverifikasi ada kode di testnet.
    - <https://www.bnbchain.org/en/testnet-faucet> — **gratis** (klaim 0.3 tBNB per 24 jam, sekali per alamat). Catatan: tulisan "0.002 BNB on BSC Mainnet is needed" di halaman itu adalah *link penjelasan* cara dapat BNB, **bukan** syarat faucet.
    - ⚠️ Hindari `testnet.bnbchain.org/faucet-smart` (skema lama) — di beberapa wilayah/versi sekarang meminta bukti kepemilikan BNB mainnet (0.002 BNB), jadi tidak gratis murni.
    - ⚠️ Faucet Chainstack (<https://faucet.chainstack.com/bnb-testnet-faucet>) **berbayar/tidak murni gratis** — butuh API key + saldo minimal ETH di mainnet.
-   - **Alternatif tercepat tanpa faucet:** wallet deployer/owner testnet (`0x487762b44C73639B8907998f76A6a4A63A29D800`) masih punya ±3,5 tBNB — import/ekspor key-nya ke MetaMask demo-1, atau transfer tBNB dari sana ke akun demo (gas cukup untuk ratusan transaksi demo).
+   - ⚠️ Wallet deployer lama (`0x487762b44C73639B8907998f76A6a4A63A29D800`) memang masih punya ±3,5 tBNB, **tapi key-nya hilang / tidak bisa diakses** → jangan diandalkan (testnet-only, tidak ada nilai riil, aman diabaikan; jangan pakai alamat itu lagi).
+   - Kebutuhan gas demo kecil: ±0,002–0,005 tBNB sudah cukup untuk puluhan transaksi, jadi 1 klaim faucet (0,3 tBNB / QuickNode) lebih dari cukup untuk seluruh demo.
    - Duduk diam 1–2 menit, cek saldo di MetaMask (jaringan BNB Smart Chain Testnet).
 3. **Siapkan 2–3 akun demo** (akun A = sponsor, akun B = anggota baru) — banyak fitur (referral,
    sponsor, ladder) jauh lebih hidup kalau punya 2 akun. Nanti bisa transfer SMT antar akun via BscScan.
